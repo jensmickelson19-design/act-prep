@@ -1,0 +1,236 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  STUDENT
+  PARENT
+}
+
+enum Subject {
+  ENGLISH
+  MATH
+  READING
+  SCIENCE
+}
+
+enum TestStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
+enum StudyPlanStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  createdAt    DateTime @default(now())
+
+  attempts        Attempt[]
+  studySessions   StudySession[]
+  testAttempts    TestAttempt[]
+  subSkillMastery SubSkillMastery[]
+  parentLinks     ParentChildLink[] @relation("ChildLinks")
+  childLinks      ParentChildLink[] @relation("ParentLinks")
+  inviteCodes     InviteCode[]
+  lessonProgress  LessonProgress[]
+  studyPlans      StudyPlan[]
+
+  @@index([role])
+}
+
+model InviteCode {
+  id         String    @id @default(cuid())
+  code       String    @unique
+  parentId   String
+  parent     User      @relation(fields: [parentId], references: [id], onDelete: Cascade)
+  redeemedBy String?
+  redeemedAt DateTime?
+  expiresAt  DateTime
+  createdAt  DateTime  @default(now())
+
+  @@index([parentId])
+}
+
+model ParentChildLink {
+  id        String   @id @default(cuid())
+  parentId  String
+  childId   String
+  parent    User     @relation("ParentLinks", fields: [parentId], references: [id], onDelete: Cascade)
+  child     User     @relation("ChildLinks", fields: [childId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([parentId, childId])
+  @@index([parentId])
+  @@index([childId])
+}
+
+model Passage {
+  id        String     @id @default(cuid())
+  subject   Subject
+  title     String?
+  body      String
+  questions Question[]
+  createdAt DateTime   @default(now())
+}
+
+model Question {
+  id                String    @id @default(cuid())
+  subject           Subject
+  reportingCategory String
+  subSkill          String
+  difficulty        Int
+  estimatedTimeSec  Int       @default(60)
+  prompt            String
+  choices           Json
+  correctAnswer     String
+  explanation       String
+  modeling          Boolean   @default(false)
+  passageId         String?
+  passage           Passage?  @relation(fields: [passageId], references: [id])
+  attempts          Attempt[]
+  createdAt         DateTime  @default(now())
+
+  // Fixed diagnostic-test membership. Null → adaptive practice bank only.
+  // diagnosticForm 1|2 identifies which of the two diagnostic forms; formOrder
+  // is the question's 1-based position within its section on that form.
+  diagnosticForm Int?
+  formOrder      Int?
+
+  @@index([subject, subSkill])
+  @@index([subject, difficulty])
+  @@index([diagnosticForm, subject, formOrder])
+}
+
+model StudySession {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject    Subject?
+  startedAt  DateTime  @default(now())
+  endedAt    DateTime?
+  lastPingAt DateTime  @default(now())
+  attempts   Attempt[]
+
+  @@index([userId, startedAt])
+}
+
+model Attempt {
+  id             String        @id @default(cuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId     String
+  question       Question      @relation(fields: [questionId], references: [id])
+  isCorrect      Boolean
+  selectedAnswer String
+  timeSpentSec   Int
+  sessionId      String?
+  session        StudySession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  createdAt      DateTime      @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, questionId])
+}
+
+model SubSkillMastery {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject       Subject
+  subSkill      String
+  masteryScore  Float    @default(0)
+  easeFactor    Float    @default(2.5)
+  intervalDays  Int      @default(0)
+  repetitions   Int      @default(0)
+  nextReviewAt  DateTime @default(now())
+  lastUpdated   DateTime @updatedAt
+
+  @@unique([userId, subject, subSkill])
+  @@index([userId, masteryScore])
+  @@index([userId, nextReviewAt])
+}
+
+model TestAttempt {
+  id                 String     @id @default(cuid())
+  userId             String
+  user               User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status             TestStatus @default(IN_PROGRESS)
+  withScience        Boolean    @default(true)
+  currentSection     Subject?
+  sectionDeadline    DateTime?
+  questionsBySection Json       @default("{}")
+  answers            Json       @default("{}")
+  sectionScores      Json?
+  compositeScore     Int?
+  startedAt          DateTime   @default(now())
+  completedAt        DateTime?
+
+  @@index([userId, startedAt])
+}
+
+// Authored instructional content — one Lesson per sub-skill (49 total). subSkill
+// is the closed-taxonomy string that joins to Question.subSkill / SubSkillMastery.
+model Lesson {
+  id         String   @id @default(cuid())
+  subject    Subject
+  subSkill   String   @unique
+  title      String
+  summary    String
+  body       String   @db.Text
+  examples   Json     @default("[]")
+  orderIndex Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  progress LessonProgress[]
+
+  @@index([subject, orderIndex])
+}
+
+model LessonProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  completedAt DateTime?
+  viewedAt    DateTime  @default(now())
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+}
+
+// A student's study plan: questionnaire answers + the generated plan artifact.
+// At most one ACTIVE plan per student (enforced in the API route).
+model StudyPlan {
+  id             String          @id @default(cuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status         StudyPlanStatus @default(ACTIVE)
+  targetScore    Int
+  takenActBefore Boolean
+  priorActScore  Int?
+  testDate       DateTime
+  hoursPerWeek   Int
+  focusSubjects  Json            @default("[]")
+  generatedPlan  Json
+  generatedAt    DateTime        @default(now())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([userId, status])
+}
