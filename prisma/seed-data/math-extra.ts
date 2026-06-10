@@ -786,9 +786,9 @@ export const mathExtraQuestions: SeedQuestion[] = [
       { label: "C", text: "1 < x + 3 ≤ 8" },
       { label: "D", text: "−2 < x + 3 ≤ 5" },
     ],
-    correctAnswer: "A",
+    correctAnswer: "C",
     explanation:
-      "Start from −2 < x ≤ 5 and add 3 to all three parts: 1 < x + 3 ≤ 8. Choice A, −5 < x + 3 ≤ 8, after subtracting 3 gives −8 < x ≤ 5 — re-check: subtract 3 from each part of A: −8 < x ≤ 5. That is not the target. Instead, the inequality whose middle is x and which yields −2 < x ≤ 5 directly is A only if we read x as the variable: A states −5 < x + 3 ≤ 8 → subtract 3 → −8 < x ≤ 5. The correct match is choice A interpreted as the equivalent transformation −5 < x + 3 means x > −8... ",
+      "To rewrite −2 < x ≤ 5 in terms of x + 3, add 3 to all three parts: −2 + 3 < x + 3 ≤ 5 + 3, which gives 1 < x + 3 ≤ 8 — choice C. Check by reversing: subtracting 3 from every part of C returns −2 < x ≤ 5, the target. The distractors come from sign or operation errors: A (−5 < x + 3 ≤ 8) subtracts 3 from the bounds instead of adding and solves to −8 < x ≤ 5; D (−2 < x + 3 ≤ 5) leaves the original bounds unchanged, forgetting to shift them; B keeps the right bounds but swaps the strict/inclusive endpoints. Common trap: when the variable is shifted by a constant, every bound must move by that same constant in the same direction.",
   },
   {
     subject: "MATH",
