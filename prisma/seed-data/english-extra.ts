@@ -1877,7 +1877,7 @@ export const englishExtraQuestions: SeedQuestion[] = [
     ],
     correctAnswer: "B",
     explanation:
-      "'Its' is the singular possessive that agrees with 'dog.' 'It's' is the contraction of 'it is,' 'their' is plural, and 'its'' is not a word.",
+      "Rule: possessive personal pronouns (its, his, hers, theirs) never take an apostrophe. 'Its' is the singular possessive agreeing with 'dog,' so B is correct. A ('it's') is the contraction of 'it is' — substitute 'it is' and 'the dog wagged it is tail' fails. C ('their') is plural and does not agree with the singular 'dog.' D ('its'') is not a word. Common trap: the apostrophe in 'it's' signals a contraction, not possession — exactly the reverse of how apostrophes work for nouns.",
   },
   {
     subject: "ENGLISH",
@@ -2075,7 +2075,7 @@ export const englishExtraQuestions: SeedQuestion[] = [
     ],
     correctAnswer: "C",
     explanation:
-      "The sentence begins with the singular third-person 'a traveler,' so the rest must stay singular and third person. C does this consistently. A and D shift to 'you,' and B shifts to the plural 'they.'",
+      "Rule: pronouns must stay consistent in person and number with their antecedent. The sentence begins with the singular third-person 'a traveler,' so the rest must remain singular and third person — C does this throughout ('a traveler... traveling'). A keeps the original 'you... you,' which clashes with 'a traveler.' D mixes 'one' with 'you,' shifting person mid-sentence. B switches to plural 'they,' breaking number agreement with the singular 'a traveler.' Common trap: 'you' feels natural in advice, but once a sentence names a third-person subject, it must not slide into second person.",
   },
 
   // ── modifiers_parallelism (12) ────────────────────────────────────────────
@@ -2095,7 +2095,7 @@ export const englishExtraQuestions: SeedQuestion[] = [
     ],
     correctAnswer: "B",
     explanation:
-      "The series uses -ing forms: 'running, jumping, and chewing.' The infinitive 'to chew,' the finite 'chews,' and the clause 'it chews' all break the parallel pattern.",
+      "Rule: items in a list must share the same grammatical form. The first two items are gerunds ('running, jumping'), so the third must also be a gerund: 'chewing' (B). A ('to chew') is an infinitive, C ('chews') is a finite verb, and D ('it chews') is a full clause — each switches form and breaks the parallel. Common trap: match the third item to the form already established by the first two, not to whatever sounds complete on its own.",
   },
   {
     subject: "ENGLISH",
@@ -2113,7 +2113,7 @@ export const englishExtraQuestions: SeedQuestion[] = [
     ],
     correctAnswer: "B",
     explanation:
-      "The series uses 'to' + verb: 'to write... to think... to speak.' The participle 'speaking,' the clause 'they speak,' and the past participle 'spoken' all break the parallel structure.",
+      "Rule: items in a list must share the same grammatical form. The first two items are infinitives ('to write... to think'), so the third must be an infinitive too: 'to speak' (B). A ('speaking') is a participle, C ('they speak') is a full clause, and D ('spoken') is a past participle — each breaks the 'to' + verb pattern. Common trap: the series sets the pattern with its first items; here the repeated 'to' must carry through to the last element.",
   },
   {
     subject: "ENGLISH",
@@ -2239,7 +2239,7 @@ export const englishExtraQuestions: SeedQuestion[] = [
     ],
     correctAnswer: "B",
     explanation:
-      "The correlative pair 'not only... but also' must join matching forms; after 'to reduce' the second element needs 'to improve.' A pairs an infinitive with a gerund, C pairs a gerund with an infinitive, and D garbles the word order.",
+      "Rule: the correlative pair 'not only... but also' must join matching grammatical forms. The first element is the infinitive 'to reduce,' so the second must be 'to improve' (B). A pairs the infinitive with the gerund 'improving,' C pairs a gerund with an infinitive, and D both mismatches forms and misplaces 'also.' Common trap: whatever form follows 'not only' must be mirrored exactly after 'but also.'",
   },
   {
     subject: "ENGLISH",
