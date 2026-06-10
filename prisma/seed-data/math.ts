@@ -1283,11 +1283,11 @@ export const mathQuestions: SeedQuestion[] = [
       { label: "A", text: "1/8" },
       { label: "B", text: "1/4" },
       { label: "C", text: "1/2" },
-      { label: "D", text: "4/8 = 5/8" },
+      { label: "D", text: "5/8" },
     ],
     correctAnswer: "C",
     explanation:
-      "The even numbers from 1 to 8 are 2, 4, 6, and 8 — that is 4 of the 8 sections. P(even) = 4/8 = 1/2.",
+      "Probability = favorable outcomes ÷ total outcomes. The even numbers from 1 to 8 are 2, 4, 6, and 8 — 4 of the 8 sections — so P(even) = 4/8 = 1/2 (choice C). A (1/8) counts only one section instead of all four even ones; B (1/4) divides the 2 evens in {1,2,3,4} by 8, or counts only 2 favorable; D (5/8) miscounts the evens as 5. Common trap: count the favorable sections carefully before dividing — here there are exactly four even numbers, not three or five.",
     diagnosticForm: 2,
     formOrder: 13,
   },

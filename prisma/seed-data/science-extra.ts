@@ -941,7 +941,7 @@ Temperature (°C) | Avg. height increase (cm)
         ],
         correctAnswer: "A",
         explanation:
-          "Experiment 1's standard conditions were white light, 24 °C, and (per Experiment 2) 12 hours of light. A 16-hour, 30 °C trial differs in both the daily light duration and the temperature.",
+          "Compare the new trial to the standard conditions one variable at a time. Experiment 1's standard conditions were white light, 24 °C, and (per Experiment 2) 12 hours of light per day. The new trial keeps white light but uses 16 hours (vs. 12) and 30 °C (vs. 24), so it differs in two variables — choice A. B and C are wrong because the light color and soil are unchanged, and D is wrong because two variables clearly differ. Common trap: check every condition against the baseline; a trial can differ in more than one variable at once.",
       },
       {
         subject: "SCIENCE",
@@ -1231,7 +1231,7 @@ Air temperature (°C) | Run time (min)
         ],
         correctAnswer: "A",
         explanation:
-          "Experiment 2's 41 min for a 200 g load was measured at 20 °C. Experiment 3 shows run time falls from 68 min at 20 °C to 44 min at 0 °C for a 100 g load. A 200 g load at 0 °C should therefore run less than 41 min.",
+          "Combine the trends from both experiments. Experiment 2's 41 min for a 200 g load was measured at 20 °C. Experiment 3 shows that lowering the temperature shortens run time — it falls from 68 min at 20 °C to 44 min at 0 °C for a 100 g load. So the same 200 g load at the colder 0 °C should run less than its 20 °C value of 41 min (choice A). B ignores the temperature effect; C predicts an increase, the wrong direction; D overstates the effect — the cold slows the motor but does not stop it. Common trap: when a new trial changes a variable shown to matter, shift the known value in the direction that variable pushes, rather than reusing it unchanged.",
       },
       {
         subject: "SCIENCE",
@@ -1682,7 +1682,7 @@ Stalactites formed long ago when the cave was repeatedly flooded by an undergrou
         ],
         correctAnswer: "B",
         explanation:
-          "Geologist 1's mechanism depends on acidic seeping water dissolving calcite and later depositing it. Geologist 2's flood-sediment mechanism relies on calcite-rich floodwater settling out, not on acidic seepage, so the acidity fact is least essential to that view.",
+          "Find the fact that one mechanism needs but the other does not. Geologist 1's slow-seepage mechanism depends on acidic water dissolving calcite and later redepositing it, so the acidity fact (B) is essential to that view but not to Geologist 2's flood-sediment mechanism, which relies on calcite-rich floodwater settling out — no acidity required. The other facts are shared ground: both views assume stalactites are calcite (A), that the limestone source is above (C), and that drip water carries dissolved calcite (D). Common trap: the answer is the fact that is load-bearing for only one model, not a fact that is simply true or that both models happen to use.",
       },
       {
         subject: "SCIENCE",
