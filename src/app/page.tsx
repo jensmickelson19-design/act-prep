@@ -47,7 +47,7 @@ export default async function Home() {
             Study smarter for test day
           </p>
           <h1 className="max-w-3xl font-serif text-4xl font-semibold tracking-tight md:text-6xl">
-            A calmer, more deliberate way to prepare for the ACT
+            Effective test study for real results
           </h1>
           <p className="max-w-xl text-base text-muted-foreground">
             Adaptive practice for students and clear progress reporting for parents — built like a
