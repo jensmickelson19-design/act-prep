@@ -6,7 +6,9 @@ import { sectionsFor } from "@/lib/test-format";
 // If the pool is smaller than N, fill the gap by random reuse.
 async function buildSection(subject: Subject, target: number): Promise<string[]> {
   const all = await prisma.question.findMany({
-    where: { subject },
+    // Random fallback tests sample the drill bank; fixed-form content is
+    // reserved for buildDiagnosticTest.
+    where: { subject, diagnosticForm: null },
     select: { id: true, subSkill: true },
   });
   if (all.length === 0) return [];

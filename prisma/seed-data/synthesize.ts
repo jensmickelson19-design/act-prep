@@ -108,7 +108,9 @@ export async function synthesizeStudentHistory(prisma: PrismaClient, studentId: 
   >();
   for (const subject of SUBJECTS) {
     const qs = await prisma.question.findMany({
-      where: { subject },
+      // Demo history draws from the drill bank only, mirroring the adaptive
+      // engine's exclusion of fixed practice-test form content.
+      where: { subject, diagnosticForm: null },
       select: { id: true, subSkill: true, difficulty: true, correctAnswer: true },
     });
     questionsBySubject.set(subject, qs);

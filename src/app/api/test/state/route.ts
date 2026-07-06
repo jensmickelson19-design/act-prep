@@ -73,9 +73,11 @@ export async function GET(req: Request) {
       subject: true,
       subSkill: true,
       difficulty: true,
+      formOrder: true,
       prompt: true,
       choices: true,
-      passage: { select: { id: true, title: true, body: true } },
+      figures: true,
+      passage: { select: { id: true, title: true, body: true, figures: true } },
     },
   });
   // Preserve the order from questionsBySection (findMany doesn't guarantee it).

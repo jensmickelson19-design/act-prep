@@ -21,10 +21,10 @@ export default async function TestStartPage() {
   return (
     <main className="container max-w-2xl space-y-8 py-12">
       <header>
-        <h1 className="text-3xl font-bold tracking-tight">Full-length practice test</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Practice Test 1</h1>
         <p className="mt-1 text-muted-foreground">
-          Timed section-by-section — just like the real ACT. Each section begins as soon as the
-          previous one ends.
+          A fixed, full-length form with real passages and figures — timed section-by-section,
+          just like the real ACT. Each section begins as soon as the previous one ends.
         </p>
       </header>
 
