@@ -77,6 +77,7 @@ async function main() {
           choices: q.choices,
           correctAnswer: q.correctAnswer,
           explanation: q.explanation,
+          figures: q.figures,
           modeling: q.modeling ?? false,
           diagnosticForm: q.diagnosticForm,
           formOrder: q.formOrder,
@@ -90,7 +91,7 @@ async function main() {
   for (const ps of [readingPassages, readingExtraPassages, sciencePassages, scienceExtraPassages]) {
     for (const p of ps) {
       const passage = await prisma.passage.create({
-        data: { subject: p.subject, title: p.title, body: p.body },
+        data: { subject: p.subject, title: p.title, body: p.body, figures: p.figures },
       });
       passageCount++;
       for (const q of p.questions) {
@@ -105,6 +106,7 @@ async function main() {
             choices: q.choices,
             correctAnswer: q.correctAnswer,
             explanation: q.explanation,
+            figures: q.figures,
             modeling: q.modeling ?? false,
             diagnosticForm: q.diagnosticForm,
             formOrder: q.formOrder,

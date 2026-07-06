@@ -84,6 +84,9 @@ model Passage {
   subject   Subject
   title     String?
   body      String
+  // Structured figure specs (FigureSpec[] from src/lib/figures.ts) referenced
+  // from the body via {{figure:id}} markers. Null → no figures.
+  figures   Json?
   questions Question[]
   createdAt DateTime   @default(now())
 }
@@ -99,6 +102,9 @@ model Question {
   choices           Json
   correctAnswer     String
   explanation       String
+  // Question-level figures (FigureSpec[]), e.g. a Math table/graph rendered
+  // between the prompt and the choices. Null → none.
+  figures           Json?
   modeling          Boolean   @default(false)
   passageId         String?
   passage           Passage?  @relation(fields: [passageId], references: [id])
@@ -169,6 +175,8 @@ model TestAttempt {
   userId             String
   user               User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   status             TestStatus @default(IN_PROGRESS)
+  // Which fixed practice-test form this attempt uses (1 or 2).
+  form               Int        @default(1)
   withScience        Boolean    @default(true)
   currentSection     Subject?
   sectionDeadline    DateTime?
