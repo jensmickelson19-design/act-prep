@@ -5,9 +5,9 @@ import type { SeedQuestion } from "./types";
 // docs/act-taxonomy.md, a 1–5 difficulty, estimatedTimeSec, and (where the stem
 // produces/interprets/evaluates a model) modeling: true.
 //
-// BATCH 1 (this file): Diagnostic Test 1 — 45 questions, diagnosticForm 1,
-// formOrder 1–45, easy→hard ramp. Diagnostic 2 and the adaptive bank are added
-// in later batches.
+// BATCH 1 (this file): 90 drill-bank questions in two easy→hard ramps
+// (formerly Diagnostic Tests 1 and 2 — untagged when the fixed practice-test
+// forms moved to prisma/seed-data/form1-*.ts).
 
 export const mathQuestions: SeedQuestion[] = [
   // ── formOrder 1 — number_operations — diff 1 ────────────────────────────────
@@ -28,8 +28,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Apply order of operations. Multiply first: 3 × 4 = 12. Then add and subtract left to right: 6 + 12 − 2 = 18 − 2 = 16.",
-    diagnosticForm: 1,
-    formOrder: 1,
   },
 
   // ── formOrder 2 — linear_equations — diff 1 ─────────────────────────────────
@@ -49,8 +47,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Subtract 9 from both sides: x = 21 − 9 = 12.",
-    diagnosticForm: 1,
-    formOrder: 2,
   },
 
   // ── formOrder 3 — word_problems — diff 1 ────────────────────────────────────
@@ -72,8 +68,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "Multiply the unit price by the quantity: 7 × $3 = $21.",
     modeling: true,
-    diagnosticForm: 1,
-    formOrder: 3,
   },
 
   // ── formOrder 4 — plane_geometry — diff 1 ───────────────────────────────────
@@ -94,8 +88,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Area of a rectangle is length times width: 8 × 5 = 40 square centimeters. (13 is the sum of the sides; 26 is the perimeter.)",
-    diagnosticForm: 1,
-    formOrder: 4,
   },
 
   // ── formOrder 5 — number_operations — diff 2 ────────────────────────────────
@@ -116,8 +108,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Compare place by place: 0.405 < 0.450 < 0.500. Writing each to three decimal places makes the order clear: 0.405, 0.450, 0.500.",
-    diagnosticForm: 1,
-    formOrder: 5,
   },
 
   // ── formOrder 6 — exponents_radicals — diff 2 ───────────────────────────────
@@ -137,8 +127,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "D",
     explanation:
       "2^5 means 2 multiplied by itself 5 times: 2 × 2 × 2 × 2 × 2 = 32. (10 multiplies base by exponent; 16 is 2^4.)",
-    diagnosticForm: 1,
-    formOrder: 6,
   },
 
   // ── formOrder 7 — data_statistics — diff 2 ──────────────────────────────────
@@ -159,8 +147,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The mean is the sum divided by the count: (71 + 68 + 74 + 71 + 66) ÷ 5 = 350 ÷ 5 = 70. (71 is the mode and median, not the mean.)",
-    diagnosticForm: 1,
-    formOrder: 7,
   },
 
   // ── formOrder 8 — expressions_polynomials — diff 2 ──────────────────────────
@@ -181,8 +167,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Distribute the 5: 5(2x − 3) = 10x − 15. Add 4x: 10x − 15 + 4x = 14x − 15. (14x − 3 forgets to distribute the 5 to the −3.)",
-    diagnosticForm: 1,
-    formOrder: 8,
   },
 
   // ── formOrder 9 — function_basics — diff 2 ──────────────────────────────────
@@ -203,8 +187,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Substitute x = 4: f(4) = 3(4) − 5 = 12 − 5 = 7. (12 forgets to subtract 5; 2 computes 3 + 4 − 5.)",
-    diagnosticForm: 1,
-    formOrder: 9,
   },
 
   // ── formOrder 10 — inequalities — diff 2 ────────────────────────────────────
@@ -225,8 +207,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Subtract 6 from both sides: x ≤ 4. Of the choices, only 4 satisfies x ≤ 4 (4 ≤ 4 is true); 5, 6, and 8 are all greater than 4.",
-    diagnosticForm: 1,
-    formOrder: 10,
   },
 
   // ── formOrder 11 — right_triangle_trig — diff 3 ─────────────────────────────
@@ -247,8 +227,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "By the Pythagorean theorem, c² = 6² + 8² = 36 + 64 = 100, so c = 10. (14 incorrectly adds the legs; 48 multiplies them.)",
-    diagnosticForm: 1,
-    formOrder: 11,
   },
 
   // ── formOrder 12 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -269,8 +247,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Slope = (change in y) / (change in x) = (11 − 3) / (6 − 2) = 8 / 4 = 2. (Choice A inverts the ratio.)",
-    diagnosticForm: 1,
-    formOrder: 12,
   },
 
   // ── formOrder 13 — probability — diff 3 ─────────────────────────────────────
@@ -291,8 +267,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "D",
     explanation:
       "Probability = favorable outcomes / total outcomes. There are 5 black socks out of 5 + 7 = 12 socks, so P(black) = 5/12. (Choice B is P(white).)",
-    diagnosticForm: 1,
-    formOrder: 13,
   },
 
   // ── formOrder 14 — linear_equations — diff 3 ────────────────────────────────
@@ -313,8 +287,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Subtract 2x from both sides: 2x − 7 = 9. Add 7: 2x = 16. Divide by 2: x = 8. (Choice C stops at 2x = 16.)",
-    diagnosticForm: 1,
-    formOrder: 14,
   },
 
   // ── formOrder 15 — sequences — diff 3 ───────────────────────────────────────
@@ -335,8 +307,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The common difference is 5. The nth term is 7 + (n − 1)(5). For n = 9: 7 + 8(5) = 7 + 40 = 47. (Choice A uses n instead of n − 1.)",
-    diagnosticForm: 1,
-    formOrder: 15,
   },
 
   // ── formOrder 16 — quadratics — diff 3 ──────────────────────────────────────
@@ -357,8 +327,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "This is a difference of squares: x² − 36 = (x − 6)(x + 6) = 0, so x = 6 or x = −6. (Choice A misses the negative root; choice C divides 36 by 2.)",
-    diagnosticForm: 1,
-    formOrder: 16,
   },
 
   // ── formOrder 17 — quadratics — diff 3 ──────────────────────────────────────
@@ -379,8 +347,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Find two numbers that multiply to 20 and add to 9: 4 and 5. So x² − 9x + 20 = (x − 4)(x − 5) = 0, giving x = 4 or x = 5. (Choice A has the signs reversed.)",
-    diagnosticForm: 1,
-    formOrder: 17,
   },
 
   // ── formOrder 18 — plane_geometry — diff 3 ──────────────────────────────────
@@ -401,8 +367,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The interior angles of a triangle sum to 180°. The third angle is 180° − 52° − 73° = 180° − 125° = 55°. (Choice A is the sum of the two given angles.)",
-    diagnosticForm: 1,
-    formOrder: 18,
   },
 
   // ── formOrder 19 — function_basics — diff 3 ─────────────────────────────────
@@ -423,8 +387,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Work from the inside out. g(3) = 2(3) = 6. Then f(6) = 6² + 1 = 36 + 1 = 37. (Choice A computes g(f(3)) instead.)",
-    diagnosticForm: 1,
-    formOrder: 19,
   },
 
   // ── formOrder 20 — word_problems — diff 3 ───────────────────────────────────
@@ -446,8 +408,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "The fuel rate is 336 ÷ 12 = 28 miles per gallon. Gallons needed = 504 ÷ 28 = 18. (Choice D is the miles-per-gallon rate, not the gallons.)",
     modeling: true,
-    diagnosticForm: 1,
-    formOrder: 20,
   },
 
   // ── formOrder 21 — data_statistics — diff 3 ─────────────────────────────────
@@ -468,8 +428,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The list has 7 values already in order. The median is the middle (4th) value: 4, 9, 11, [15], 15, 20, 23. The median is 15. (Choice D is the mean.)",
-    diagnosticForm: 1,
-    formOrder: 21,
   },
 
   // ── formOrder 22 — inequalities — diff 3 ────────────────────────────────────
@@ -490,8 +448,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Subtract 4: −3x < 15. Divide by −3 and flip the inequality sign (dividing by a negative): x > −5. (Choice A forgets to flip the sign.)",
-    diagnosticForm: 1,
-    formOrder: 22,
   },
 
   // ── formOrder 23 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -512,8 +468,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The midpoint averages the coordinates: x = (−2 + 8)/2 = 3, y = (5 + (−1))/2 = 2. The midpoint is (3, 2). (Choice D is the difference of the endpoints.)",
-    diagnosticForm: 1,
-    formOrder: 23,
   },
 
   // ── formOrder 24 — expressions_polynomials — diff 3 ─────────────────────────
@@ -534,8 +488,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Use FOIL: (2x)(x) = 2x², (2x)(−5) = −10x, (3)(x) = 3x, (3)(−5) = −15. Combine: 2x² − 10x + 3x − 15 = 2x² − 7x − 15.",
-    diagnosticForm: 1,
-    formOrder: 24,
   },
 
   // ── formOrder 25 — trigonometry — diff 3 ────────────────────────────────────
@@ -556,8 +508,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "By SOHCAHTOA, sine is opposite over hypotenuse: sin θ = 7/25. (Choice A is cos θ; choice B is tan θ.)",
-    diagnosticForm: 1,
-    formOrder: 25,
   },
 
   // ── formOrder 26 — solid_geometry — diff 3 ──────────────────────────────────
@@ -578,8 +528,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "D",
     explanation:
       "Volume of a rectangular box is length × width × height: 4 × 5 × 6 = 120 cubic inches. (Choice C is the surface area.)",
-    diagnosticForm: 1,
-    formOrder: 26,
   },
 
   // ── formOrder 27 — function_graphs — diff 3 ─────────────────────────────────
@@ -600,8 +548,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "A shift right by 3 replaces x with (x − 3); a shift down by 2 subtracts 2 outside: y = (x − 3)² − 2. (Choice B shifts left, since (x + 3) moves the graph left.)",
-    diagnosticForm: 1,
-    formOrder: 27,
   },
 
   // ── formOrder 28 — numbers_advanced — diff 3 ────────────────────────────────
@@ -622,8 +568,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Absolute value gives distance from zero, always nonnegative. |3 − 11| = |−8| = 8 and |−5| = 5. Then 8 + 5 = 13. (Choice A computes (3 − 11) + 5 without taking absolute values.)",
-    diagnosticForm: 1,
-    formOrder: 28,
   },
 
   // ── formOrder 29 — linear_equations — diff 3 ────────────────────────────────
@@ -644,8 +588,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Add the two equations to eliminate y: (2x + y) + (x − y) = 13 + 2, giving 3x = 15, so x = 5. (Then y = 3.)",
-    diagnosticForm: 1,
-    formOrder: 29,
   },
 
   // ── formOrder 30 — plane_geometry — diff 3 ──────────────────────────────────
@@ -666,8 +608,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Area of a circle is πr². With r = 6, area = π(6²) = 36π square centimeters. (Choice A is the circumference, 2πr.)",
-    diagnosticForm: 1,
-    formOrder: 30,
   },
 
   // ── formOrder 31 — data_statistics — diff 3 ─────────────────────────────────
@@ -689,8 +629,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "The original total is 20 × 78 = 1560. Adding 99 gives 1659. The new average is 1659 ÷ 21 = 79. (Choice D averages only 78 and 99.)",
     modeling: true,
-    diagnosticForm: 1,
-    formOrder: 31,
   },
 
   // ── formOrder 32 — expressions_polynomials — diff 3 ─────────────────────────
@@ -711,8 +649,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Find two numbers that multiply to −24 and add to +2: −4 and +6. So x² + 2x − 24 = (x − 4)(x + 6). (Choice A gives a middle term of −2x.)",
-    diagnosticForm: 1,
-    formOrder: 32,
   },
 
   // ── formOrder 33 — function_basics — diff 3 ─────────────────────────────────
@@ -733,8 +669,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The expression under a square root must be nonnegative: x − 4 ≥ 0, so x ≥ 4. (Choice C reverses the inequality.)",
-    diagnosticForm: 1,
-    formOrder: 33,
   },
 
   // ── formOrder 34 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -755,8 +689,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Distance = √((4 − 1)² + (6 − 2)²) = √(3² + 4²) = √(9 + 16) = √25 = 5. (Choice C is the value before taking the square root.)",
-    diagnosticForm: 1,
-    formOrder: 34,
   },
 
   // ── formOrder 35 — probability — diff 3 ─────────────────────────────────────
@@ -777,8 +709,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "There are 36 equally likely outcomes. A sum of 9 occurs for (3,6), (4,5), (5,4), (6,3) — 4 outcomes. P = 4/36 = 1/9.",
-    diagnosticForm: 1,
-    formOrder: 35,
   },
 
   // ── formOrder 36 — quadratics — diff 4 ──────────────────────────────────────
@@ -799,8 +729,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Factor by grouping: 2x² − 7x + 3 = (2x − 1)(x − 3) = 0. Setting each factor to zero gives 2x − 1 = 0 → x = 1/2, and x − 3 = 0 → x = 3.",
-    diagnosticForm: 1,
-    formOrder: 36,
   },
 
   // ── formOrder 37 — exponents_radicals / numbers_advanced — diff 4 ───────────
@@ -821,8 +749,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "A rational exponent 2/3 means take the cube root, then square: the cube root of 27 is 3, and 3² = 9. (Choice C squares first without rooting.)",
-    diagnosticForm: 1,
-    formOrder: 37,
   },
 
   // ── formOrder 38 — right_triangle_trig — diff 4 ─────────────────────────────
@@ -843,8 +769,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "In a 30°-60°-90° triangle the sides are in the ratio 1 : √3 : 2, with the side opposite 30° being the shortest. It is half the hypotenuse: 14 ÷ 2 = 7. (Choice B is the side opposite 60°.)",
-    diagnosticForm: 1,
-    formOrder: 38,
   },
 
   // ── formOrder 39 — numbers_advanced — diff 4 ────────────────────────────────
@@ -865,8 +789,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "FOIL: (3)(1) + (3)(−4i) + (2i)(1) + (2i)(−4i) = 3 − 12i + 2i − 8i². Since i² = −1, −8i² = +8. Combine: (3 + 8) + (−12i + 2i) = 11 − 10i.",
-    diagnosticForm: 1,
-    formOrder: 39,
   },
 
   // ── formOrder 40 — word_problems — diff 4 ───────────────────────────────────
@@ -888,8 +810,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "Rates add. The first pipe fills 1/6 of the tank per hour, the second 1/4 per hour. Combined: 1/6 + 1/4 = 2/12 + 3/12 = 5/12 per hour. Time = 1 ÷ (5/12) = 12/5 = 2.4 hours. (Choice A averages the two times.)",
     modeling: true,
-    diagnosticForm: 1,
-    formOrder: 40,
   },
 
   // ── formOrder 41 — function_graphs — diff 4 ─────────────────────────────────
@@ -910,8 +830,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "A vertical asymptote of a rational function occurs where the denominator equals zero (and the numerator does not). Set x + 3 = 0, so x = −3. (Choice A is the x-intercept, where the numerator is zero.)",
-    diagnosticForm: 1,
-    formOrder: 41,
   },
 
   // ── formOrder 42 — right_triangle_trig — diff 4 ─────────────────────────────
@@ -933,8 +851,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "The wall height is the side opposite the 60° angle, and the ladder is the hypotenuse. sin 60° = height / 12, so height = 12 · sin 60° = 12 · (√3/2) = 6√3 feet. (Choice A uses sin 30°, the side opposite the wrong angle.)",
     modeling: true,
-    diagnosticForm: 1,
-    formOrder: 42,
   },
 
   // ── formOrder 43 — solid_geometry — diff 4 ──────────────────────────────────
@@ -955,8 +871,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Volume of a cylinder is πr²h. With r = 3 and h = 10: π(3²)(10) = π(9)(10) = 90π cubic centimeters. (Choice A uses r instead of r².)",
-    diagnosticForm: 1,
-    formOrder: 43,
   },
 
   // ── formOrder 44 — sequences — diff 5 ───────────────────────────────────────
@@ -977,8 +891,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "From term 2 to term 5 the value is multiplied by the common ratio r three times: 12 · r³ = 96, so r³ = 8 and r = 2. The first term is the second term divided by r: 12 ÷ 2 = 6.",
-    diagnosticForm: 1,
-    formOrder: 44,
   },
 
   // ── formOrder 45 — trigonometry — diff 5 ────────────────────────────────────
@@ -999,8 +911,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Use the identity sin²θ + cos²θ = 1: cos²θ = 1 − (3/5)² = 1 − 9/25 = 16/25, so cos θ = ±4/5. In the second quadrant cosine is negative, so cos θ = −4/5. (Choice A ignores the quadrant sign.)",
-    diagnosticForm: 1,
-    formOrder: 45,
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -1026,8 +936,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Do division and multiplication before addition: 48 ÷ 6 = 8 and 5 × 2 = 10. Then 8 + 10 = 18.",
-    diagnosticForm: 2,
-    formOrder: 1,
   },
 
   // ── formOrder 2 — linear_equations — diff 1 ─────────────────────────────────
@@ -1047,8 +955,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Divide both sides by 5: x = 35 ÷ 5 = 7.",
-    diagnosticForm: 2,
-    formOrder: 2,
   },
 
   // ── formOrder 3 — word_problems — diff 1 ────────────────────────────────────
@@ -1070,8 +976,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "Multiply cups per batch by the number of batches: 2 × 6 = 12 cups.",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 3,
   },
 
   // ── formOrder 4 — plane_geometry — diff 1 ───────────────────────────────────
@@ -1092,8 +996,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "A square has four equal sides, so its perimeter is 4 × 9 = 36 inches. (81 is the area; 18 doubles one side.)",
-    diagnosticForm: 2,
-    formOrder: 4,
   },
 
   // ── formOrder 5 — exponents_radicals — diff 2 ───────────────────────────────
@@ -1113,8 +1015,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The square root of 81 is the number that, multiplied by itself, gives 81: 9 × 9 = 81, so √81 = 9.",
-    diagnosticForm: 2,
-    formOrder: 5,
   },
 
   // ── formOrder 6 — data_statistics — diff 2 ──────────────────────────────────
@@ -1135,8 +1035,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The mode is the value that appears most often. 85 appears twice; every other score appears once. (88 is the mean; 90 is the median.)",
-    diagnosticForm: 2,
-    formOrder: 6,
   },
 
   // ── formOrder 7 — number_operations — diff 2 ────────────────────────────────
@@ -1156,8 +1054,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Divide the numerator by the denominator: 3 ÷ 8 = 0.375. (0.625 is 5/8; 2.667 inverts the fraction.)",
-    diagnosticForm: 2,
-    formOrder: 7,
   },
 
   // ── formOrder 8 — expressions_polynomials — diff 2 ──────────────────────────
@@ -1178,8 +1074,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Combine like terms. The x-terms: 7x − 3x = 4x. The constants: 4 + 9 = 13. The result is 4x + 13. (Choice A adds the x-terms instead of subtracting.)",
-    diagnosticForm: 2,
-    formOrder: 8,
   },
 
   // ── formOrder 9 — function_basics — diff 2 ──────────────────────────────────
@@ -1200,8 +1094,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Substitute x = 5: g(5) = 5² − 2(5) = 25 − 10 = 15. (Choice B forgets to subtract; choice C uses 5·2 then 5².)",
-    diagnosticForm: 2,
-    formOrder: 9,
   },
 
   // ── formOrder 10 — inequalities — diff 2 ────────────────────────────────────
@@ -1222,8 +1114,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Add 4 to both sides: 3x > 15. Divide by 3: x > 5. The inequality sign does not flip because 3 is positive.",
-    diagnosticForm: 2,
-    formOrder: 10,
   },
 
   // ── formOrder 11 — right_triangle_trig — diff 3 ─────────────────────────────
@@ -1244,8 +1134,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "By the Pythagorean theorem, leg² = 13² − 5² = 169 − 25 = 144, so the leg is √144 = 12. (Choice D adds the squares instead of subtracting.)",
-    diagnosticForm: 2,
-    formOrder: 11,
   },
 
   // ── formOrder 12 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -1266,8 +1154,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "In slope-intercept form y = mx + b, the y-intercept is b. Here b = 7. (Choice A is the slope; choice C is the x-intercept.)",
-    diagnosticForm: 2,
-    formOrder: 12,
   },
 
   // ── formOrder 13 — probability — diff 3 ─────────────────────────────────────
@@ -1288,8 +1174,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Probability = favorable outcomes ÷ total outcomes. The even numbers from 1 to 8 are 2, 4, 6, and 8 — 4 of the 8 sections — so P(even) = 4/8 = 1/2 (choice C). A (1/8) counts only one section instead of all four even ones; B (1/4) divides the 2 evens in {1,2,3,4} by 8, or counts only 2 favorable; D (5/8) miscounts the evens as 5. Common trap: count the favorable sections carefully before dividing — here there are exactly four even numbers, not three or five.",
-    diagnosticForm: 2,
-    formOrder: 13,
   },
 
   // ── formOrder 14 — linear_equations — diff 3 ────────────────────────────────
@@ -1310,8 +1194,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Distribute: 3x + 6 = 5x − 4. Subtract 3x: 6 = 2x − 4. Add 4: 10 = 2x. Divide by 2: x = 5.",
-    diagnosticForm: 2,
-    formOrder: 14,
   },
 
   // ── formOrder 15 — sequences — diff 3 ───────────────────────────────────────
@@ -1332,8 +1214,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The common ratio is 2. Continuing: 24 (4th), 48 (5th), 96 (6th). The 6th term is 96. (Choice A is the 5th term.)",
-    diagnosticForm: 2,
-    formOrder: 15,
   },
 
   // ── formOrder 16 — quadratics — diff 3 ──────────────────────────────────────
@@ -1354,8 +1234,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Find two numbers multiplying to −14 and adding to 5: 7 and −2. So x² + 5x − 14 = (x − 2)(x + 7) = 0, giving x = 2 or x = −7.",
-    diagnosticForm: 2,
-    formOrder: 16,
   },
 
   // ── formOrder 17 — expressions_polynomials — diff 3 ─────────────────────────
@@ -1376,8 +1254,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "(3x − 2)² = (3x − 2)(3x − 2). FOIL: 9x² − 6x − 6x + 4 = 9x² − 12x + 4. (Choice A forgets the middle term.)",
-    diagnosticForm: 2,
-    formOrder: 17,
   },
 
   // ── formOrder 18 — plane_geometry — diff 3 ──────────────────────────────────
@@ -1398,8 +1274,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "Co-interior angles formed by a transversal cutting parallel lines are supplementary — they sum to 180°. So the angle is 180° − 110° = 70°. (Choice A would be a corresponding or alternate angle.)",
-    diagnosticForm: 2,
-    formOrder: 18,
   },
 
   // ── formOrder 19 — function_basics — diff 3 ─────────────────────────────────
@@ -1420,8 +1294,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Substitute g(x) into f: f(g(x)) = 2(x − 3) + 1 = 2x − 6 + 1 = 2x − 5. (Choice C forgets the +1.)",
-    diagnosticForm: 2,
-    formOrder: 19,
   },
 
   // ── formOrder 20 — word_problems — diff 3 ───────────────────────────────────
@@ -1443,8 +1315,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "The markup is 35% of $40 = 0.35 × 40 = $14. New price = $40 + $14 = $54. (Choice B is the markup alone.)",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 20,
   },
 
   // ── formOrder 21 — data_statistics — diff 3 ─────────────────────────────────
@@ -1466,8 +1336,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "Total points = 3(70) + 5(80) + 2(95) = 210 + 400 + 190 = 800. There are 3 + 5 + 2 = 10 students. Mean = 800 ÷ 10 = 80.",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 21,
   },
 
   // ── formOrder 22 — inequalities — diff 3 ────────────────────────────────────
@@ -1488,8 +1356,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Add 5 to all three parts: 4 ≤ 2x < 12. Divide all parts by 2: 2 ≤ x < 6.",
-    diagnosticForm: 2,
-    formOrder: 22,
   },
 
   // ── formOrder 23 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -1510,8 +1376,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The point (0, −3) is the y-intercept, so b = −3. With slope m = 4, the equation is y = 4x − 3.",
-    diagnosticForm: 2,
-    formOrder: 23,
   },
 
   // ── formOrder 24 — number_operations — diff 3 ───────────────────────────────
@@ -1532,8 +1396,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Use a common denominator of 12: 5/6 = 10/12 and 1/4 = 3/12. Then 10/12 − 3/12 = 7/12.",
-    diagnosticForm: 2,
-    formOrder: 24,
   },
 
   // ── formOrder 25 — trigonometry — diff 3 ────────────────────────────────────
@@ -1554,8 +1416,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "From the unit circle, cos 60° = 1/2. (Choice B is cos 30°; choice C is cos 45°.)",
-    diagnosticForm: 2,
-    formOrder: 25,
   },
 
   // ── formOrder 26 — solid_geometry — diff 3 ──────────────────────────────────
@@ -1576,8 +1436,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "A cube has 6 identical square faces. Each face has area 5² = 25 sq cm. Total = 6 × 25 = 150 sq cm. (Choice B is the volume.)",
-    diagnosticForm: 2,
-    formOrder: 26,
   },
 
   // ── formOrder 27 — function_graphs — diff 3 ─────────────────────────────────
@@ -1598,8 +1456,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Reflecting across the x-axis negates the output: y becomes −y, giving y = −|x|. (Choice A, y = |−x|, equals the original y = |x|.)",
-    diagnosticForm: 2,
-    formOrder: 27,
   },
 
   // ── formOrder 28 — numbers_advanced — diff 3 ────────────────────────────────
@@ -1620,8 +1476,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Add real parts and imaginary parts separately: (4 + (−9)) + (7 + 2)i = −5 + 9i.",
-    diagnosticForm: 2,
-    formOrder: 28,
   },
 
   // ── formOrder 29 — linear_equations — diff 3 ────────────────────────────────
@@ -1642,8 +1496,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Substitute x = y + 2 into the first equation: 3(y + 2) + 2y = 16, so 3y + 6 + 2y = 16, giving 5y = 10 and y = 2.",
-    diagnosticForm: 2,
-    formOrder: 29,
   },
 
   // ── formOrder 30 — plane_geometry — diff 3 ──────────────────────────────────
@@ -1664,8 +1516,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Area of a trapezoid is ½(b₁ + b₂)h = ½(6 + 14)(5) = ½(20)(5) = 50. (Choice B omits the ½.)",
-    diagnosticForm: 2,
-    formOrder: 30,
   },
 
   // ── formOrder 31 — data_statistics — diff 3 ─────────────────────────────────
@@ -1687,8 +1537,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "A 4-test average of 86 needs a total of 4 × 86 = 344. The three known scores sum to 88 + 92 + 79 = 259. The fourth score must be 344 − 259 = 85.",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 31,
   },
 
   // ── formOrder 32 — expressions_polynomials — diff 3 ─────────────────────────
@@ -1709,8 +1557,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The greatest common factor of 3x² and 12x is 3x. Factoring it out: 3x² − 12x = 3x(x − 4). (Choice C does not factor out the full GCF.)",
-    diagnosticForm: 2,
-    formOrder: 32,
   },
 
   // ── formOrder 33 — function_basics — diff 3 ─────────────────────────────────
@@ -1731,8 +1577,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "Each input increase of 1 raises the output by 3, so f(x) = 3x + 1. Then f(6) = 3(6) + 1 = 19. (Choice A is f(5).)",
-    diagnosticForm: 2,
-    formOrder: 33,
   },
 
   // ── formOrder 34 — coordinate_geometry — diff 3 ─────────────────────────────
@@ -1753,8 +1597,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Parallel lines have equal slopes. Line m has slope 3, so a parallel line also has slope 3: y = 3x + 5. (Choice D is perpendicular, slope −1/3.)",
-    diagnosticForm: 2,
-    formOrder: 34,
   },
 
   // ── formOrder 35 — probability — diff 3 ─────────────────────────────────────
@@ -1775,8 +1617,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "There are 12 marbles. P(first green) = 5/12. After removing one green, 4 of 11 remain green: P(second green) = 4/11. Multiply: (5/12)(4/11) = 20/132 = 5/33. (Choice B forgets the marble is not replaced.)",
-    diagnosticForm: 2,
-    formOrder: 35,
   },
 
   // ── formOrder 36 — quadratics — diff 4 ──────────────────────────────────────
@@ -1797,8 +1637,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "With a = 1, b = −4, c = −1: x = (4 ± √(16 + 4)) / 2 = (4 ± √20) / 2 = (4 ± 2√5) / 2 = 2 ± √5.",
-    diagnosticForm: 2,
-    formOrder: 36,
   },
 
   // ── formOrder 37 — exponents_radicals — diff 4 ──────────────────────────────
@@ -1819,8 +1657,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Move the decimal point 6 places to the right to get 4.5, so the exponent is −6: 0.0000045 = 4.5 × 10⁻⁶. (Choice D miscounts the places.)",
-    diagnosticForm: 2,
-    formOrder: 37,
   },
 
   // ── formOrder 38 — right_triangle_trig — diff 4 ─────────────────────────────
@@ -1841,8 +1677,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "In a 45°-45°-90° triangle the sides are in the ratio 1 : 1 : √2, so the hypotenuse is a leg times √2: 9√2. (Choice C doubles the leg.)",
-    diagnosticForm: 2,
-    formOrder: 38,
   },
 
   // ── formOrder 39 — numbers_advanced — diff 4 ────────────────────────────────
@@ -1863,8 +1697,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Matrix addition adds corresponding entries. The row 1, column 1 entry is 2 + 4 = 6. (Choice C, 13, would come from multiplying the matrices.)",
-    diagnosticForm: 2,
-    formOrder: 39,
   },
 
   // ── formOrder 40 — word_problems — diff 4 ───────────────────────────────────
@@ -1886,8 +1718,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "Moving apart, their separation rate is 55 + 70 = 125 mph. Time = distance ÷ rate = 500 ÷ 125 = 4 hours. (Choice D uses only one train's speed.)",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 40,
   },
 
   // ── formOrder 41 — function_graphs — diff 4 ─────────────────────────────────
@@ -1908,8 +1738,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The x-coordinate of the vertex is −b/(2a) = −(−6)/(2·1) = 3. Substituting: y = 3² − 6(3) + 5 = 9 − 18 + 5 = −4. The vertex is (3, −4).",
-    diagnosticForm: 2,
-    formOrder: 41,
   },
 
   // ── formOrder 42 — right_triangle_trig — diff 4 ─────────────────────────────
@@ -1931,8 +1759,6 @@ export const mathQuestions: SeedQuestion[] = [
     explanation:
       "The 80-foot distance is adjacent to the 35° angle and the height is opposite it. tan 35° = opposite/adjacent = height/80, so height = 80 · tan 35°. (Choice C inverts the relationship.)",
     modeling: true,
-    diagnosticForm: 2,
-    formOrder: 42,
   },
 
   // ── formOrder 43 — solid_geometry — diff 4 ──────────────────────────────────
@@ -1953,8 +1779,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Volume = 4/3 πr³ = 4/3 π(3³) = 4/3 π(27) = 36π cubic centimeters. (Choice B is r³ alone; choice C uses 4/3 πr.)",
-    diagnosticForm: 2,
-    formOrder: 43,
   },
 
   // ── formOrder 44 — sequences — diff 5 ───────────────────────────────────────
@@ -1975,8 +1799,6 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "From term 4 to term 10 is 6 steps, with a total increase of 49 − 19 = 30, so the common difference is 30 ÷ 6 = 5. The first term is term 4 minus 3 steps: 19 − 3(5) = 19 − 15 = 4.",
-    diagnosticForm: 2,
-    formOrder: 44,
   },
 
   // ── formOrder 45 — trigonometry — diff 5 ────────────────────────────────────
@@ -1997,7 +1819,5 @@ export const mathQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "tan θ = opposite/adjacent = 5/12, so picture a right triangle with opposite leg 5 and adjacent leg 12. The hypotenuse is √(5² + 12²) = √169 = 13. Then sin θ = opposite/hypotenuse = 5/13.",
-    diagnosticForm: 2,
-    formOrder: 45,
   },
 ];

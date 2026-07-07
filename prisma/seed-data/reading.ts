@@ -1,8 +1,8 @@
 import type { SeedPassage } from "./types";
 
-// READING — fixed diagnostic forms. This file holds Diagnostic Test 1 and (in a
-// later batch) Diagnostic Test 2. Each form is 4 passages / 36 questions, one
-// passage per genre, one of which is a paired two-text set. Every passage and
+// READING — drill-bank passage sets (formerly Diagnostic Tests 1 and 2 —
+// untagged when the fixed practice-test forms moved to form1-*.ts). Two groups
+// of 4 passages / 36 questions, one passage per genre, one paired two-text set. Every passage and
 // question is original content authored for this app; all "adapted from" framing
 // in titles refers to invented source works.
 export const readingPassages: SeedPassage[] = [
@@ -12,7 +12,6 @@ export const readingPassages: SeedPassage[] = [
   {
     subject: "READING",
     passageType: "literary_narrative",
-    diagnosticForm: 1,
     title: "From the short story \"The Inheritance of Salt\" by Della Voorhees",
     body: `When my aunt Ramona died, she left me the diner and nothing else, which was her way of telling me she had been paying attention. She knew I had spent eleven years in the city writing copy for a furniture catalog, describing couches I would never sit on, and she knew that I had grown thin in a way that had nothing to do with my weight. The lawyer's letter arrived on a Tuesday. By Friday I had given notice, and by the following Wednesday I was standing in the gravel lot of the Blue Hour Diner, holding a ring of keys that felt heavier than it had any right to feel.
 
@@ -30,8 +29,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 1,
         prompt: "The passage as a whole is best described as an account of:",
         choices: [
           { label: "A", text: "a woman's struggle to modernize a failing rural diner she has inherited." },
@@ -48,8 +45,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "sequence_relationships",
         difficulty: 1,
         estimatedTimeSec: 45,
-        diagnosticForm: 1,
-        formOrder: 2,
         prompt: "According to the list in Ramona's handwriting, which task is performed last?",
         choices: [
           { label: "A", text: "Making the coffee" },
@@ -66,8 +61,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 3,
         prompt: "The narrator states that, before taking over the diner, she had worked for eleven years:",
         choices: [
           { label: "A", text: "writing advertising copy for a furniture catalog." },
@@ -84,8 +77,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 4,
         prompt: "As it is used in the third paragraph, the word \"devotion\" most nearly means:",
         choices: [
           { label: "A", text: "religious worship." },
@@ -102,8 +93,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "word_meaning",
         difficulty: 4,
         estimatedTimeSec: 70,
-        diagnosticForm: 1,
-        formOrder: 5,
         prompt: "The narrator's statement that she had \"grown thin in a way that had nothing to do with my weight\" most nearly suggests that she had become:",
         choices: [
           { label: "A", text: "physically ill from overwork." },
@@ -120,8 +109,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 6,
         prompt: "The detail about the salt shakers standing \"in their squad of twelve\" and being filled \"to the same level\" functions in the passage primarily to:",
         choices: [
           { label: "A", text: "establish that the diner has fallen into disrepair since Ramona's death." },
@@ -138,8 +125,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "purpose_point_of_view",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 1,
-        formOrder: 7,
         prompt: "The narrator most likely describes the diner as something that \"did not care who I was\" and \"only cared whether the sequence was kept\" in order to convey that she has come to see:",
         choices: [
           { label: "A", text: "the diner as a cold and unwelcoming place she regrets inheriting." },
@@ -156,8 +141,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "arguments",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 8,
         prompt: "Which of the following pieces of evidence best supports the narrator's conclusion that her aunt had \"been paying attention\"?",
         choices: [
           { label: "A", text: "Ramona ran the diner for thirty-one years without ever closing for a holiday." },
@@ -174,8 +157,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
         subSkill: "close_reading",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 9,
         prompt: "When the man in the orange vest \"turned one of the salt shakers a quarter turn,\" the narrator presents this gesture as:",
         choices: [
           { label: "A", text: "an unconscious, habitual act, like straightening a picture without thinking." },
@@ -196,7 +177,6 @@ By six the first truck had pulled in. A man in an orange vest took the stool nea
   {
     subject: "READING",
     passageType: "social_science",
-    diagnosticForm: 1,
     title: "From \"The Quiet Hours\" by Theodore Banner, a study of public library use",
     body: `For most of the twentieth century, planners measured the success of a public library by a single number: circulation, the count of items checked out and carried home. The logic was simple. A library existed to lend books, so a library that lent more books was doing more good. Funding formulas in many municipalities tied a branch's budget directly to its circulation, and a branch whose numbers fell risked being labeled underused and, eventually, closed.
 
@@ -214,8 +194,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 10,
         prompt: "The main idea of the passage is that:",
         choices: [
           { label: "A", text: "circulation has always been an inaccurate way to count how many books a library owns." },
@@ -232,8 +210,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "visual_quantitative",
         difficulty: 2,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 11,
         prompt: "Based on the four branches' figures reported in the third paragraph, which branch had the highest number of visits?",
         choices: [
           { label: "A", text: "Eastgate" },
@@ -250,8 +226,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 12,
         prompt: "The fourth paragraph, which focuses on the Eastgate branch, functions in the passage primarily to:",
         choices: [
           { label: "A", text: "provide a concrete case in which the two measures sharply disagree, and explain why." },
@@ -268,8 +242,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 13,
         prompt: "According to the passage, the figure that library systems began tracking alongside circulation in the early 2000s was:",
         choices: [
           { label: "A", text: "the number of new library cards issued." },
@@ -286,8 +258,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 14,
         prompt: "The examples in the second paragraph — the retiree, the job seeker, and the parent at story hour — primarily serve to:",
         choices: [
           { label: "A", text: "prove that most library visitors never borrow books." },
@@ -304,8 +274,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 15,
         prompt: "According to the passage, what is the relationship between Eastgate's location and its pattern of use?",
         choices: [
           { label: "A", text: "Its distance from any school caused its low visit numbers." },
@@ -322,8 +290,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 16,
         prompt: "As it is used in the final paragraph, the word \"reshapes\" most nearly means:",
         choices: [
           { label: "A", text: "physically rebuilds." },
@@ -340,8 +306,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "arguments",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 1,
-        formOrder: 17,
         prompt: "Which statement best expresses Banner's central claim about measurement?",
         choices: [
           { label: "A", text: "Any measure of a library's success will eventually distort the library's behavior, so libraries should not be measured at all." },
@@ -358,8 +322,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
         subSkill: "purpose_point_of_view",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 18,
         prompt: "The author's attitude toward the circulation measure is best described as:",
         choices: [
           { label: "A", text: "wholly dismissive — the measure has no legitimate use." },
@@ -380,7 +342,6 @@ Banner argues that the lesson is not that circulation should be discarded but th
   {
     subject: "READING",
     passageType: "humanities",
-    diagnosticForm: 1,
     title: "Paired Passages: On the Restoration of Old Buildings",
     body: `Passage A is adapted from an essay by the architectural historian Pilar Ocampo. Passage B is adapted from a memoir by Gideon Salt, a stonemason who worked on the restoration of medieval cathedrals.
 
@@ -408,8 +369,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "purpose_point_of_view",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 19,
         prompt: "The central purpose of Passage A is to:",
         choices: [
           { label: "A", text: "describe the techniques used to artificially weather new stone." },
@@ -426,8 +385,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 20,
         prompt: "In Passage A, when Ocampo writes that to \"smooth its surface is to erase its sentences,\" she is comparing a building to:",
         choices: [
           { label: "A", text: "a piece of music." },
@@ -444,8 +401,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 21,
         prompt: "In Passage B, Salt compares the repaired sections of the cathedral he worked on as a young man to:",
         choices: [
           { label: "A", text: "a fine old coat with bright new patches sewn over the holes." },
@@ -462,8 +417,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "purpose_point_of_view",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 1,
-        formOrder: 22,
         prompt: "Salt's central point of view in Passage B is that a restorer should:",
         choices: [
           { label: "A", text: "always forge the past so that no repair can ever be detected." },
@@ -480,8 +433,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 23,
         prompt: "Which of the following best summarizes the disagreement between the two passages?",
         choices: [
           { label: "A", text: "Whether old buildings should be restored at all" },
@@ -498,8 +449,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "multiple_texts",
         difficulty: 4,
         estimatedTimeSec: 85,
-        diagnosticForm: 1,
-        formOrder: 24,
         prompt: "Both Ocampo and Salt would most likely agree with which of the following statements?",
         choices: [
           { label: "A", text: "A restorer should make every new stone imitate the tool marks of the old." },
@@ -516,8 +465,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "multiple_texts",
         difficulty: 5,
         estimatedTimeSec: 90,
-        diagnosticForm: 1,
-        formOrder: 25,
         prompt: "How would Salt most likely respond to Ocampo's claim that a seamless restoration \"deprives future historians of the evidence they would need\"?",
         choices: [
           { label: "A", text: "He would accept the underlying concern but argue it can be met by a written archive rather than by a visible seam." },
@@ -534,8 +481,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "arguments",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 1,
-        formOrder: 26,
         prompt: "In Passage A, Ocampo anticipates and answers a possible objection to her argument. That objection is that:",
         choices: [
           { label: "A", text: "new stone is too expensive to cut in the manner of its own century." },
@@ -552,8 +497,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 27,
         prompt: "In Passage B, Salt presents his early work under a strict master as the cause of:",
         choices: [
           { label: "A", text: "his decision to stop working as a stonemason." },
@@ -574,7 +517,6 @@ Yet I will grant Ocampo this: a repair that disappears must still be recorded. W
   {
     subject: "READING",
     passageType: "natural_science",
-    diagnosticForm: 1,
     title: "From \"The Cold Engine\" by Dr. Naomi Frelich, on the physiology of wood frogs",
     body: `Most animals that live where winters are severe avoid the cold rather than endure it. Birds migrate; mammals burrow and lower their metabolism; many insects retreat below the frost line. The wood frog, a small amphibian found across much of northern North America, does something stranger. It allows a large fraction of the water in its body to freeze solid, and then, weeks or months later, it thaws and resumes its life. For the period in between, by most ordinary definitions, the frog is not alive at all. Its heart does not beat. No blood moves. No breath is drawn.
 
@@ -594,8 +536,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 28,
         prompt: "The passage is primarily concerned with explaining:",
         choices: [
           { label: "A", text: "why most northern animals migrate or burrow to avoid winter." },
@@ -612,8 +552,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 1,
-        formOrder: 29,
         prompt: "According to the passage, the substance the wood frog's liver releases into the bloodstream to protect its cells is:",
         choices: [
           { label: "A", text: "salt." },
@@ -630,8 +568,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 1,
-        formOrder: 30,
         prompt: "According to the passage, what triggers the wood frog's liver to release glucose?",
         choices: [
           { label: "A", text: "The actual formation of ice on the frog's skin" },
@@ -648,8 +584,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "close_reading",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 31,
         prompt: "The passage indicates that ice forming outside a cell is dangerous because it:",
         choices: [
           { label: "A", text: "raises the temperature inside the cell." },
@@ -666,8 +600,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "visual_quantitative",
         difficulty: 2,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 32,
         prompt: "Based on the laboratory measurements described in the fifth paragraph, the fraction of body water that had frozen at a body temperature of minus two degrees Celsius was about:",
         choices: [
           { label: "A", text: "45 percent." },
@@ -684,8 +616,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "purpose_point_of_view",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 1,
-        formOrder: 33,
         prompt: "The author most likely calls the leveling-off of the frozen fraction near 65 percent \"itself a clue\" in order to:",
         choices: [
           { label: "A", text: "warn readers that the laboratory data should not be trusted." },
@@ -702,8 +632,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 1,
-        formOrder: 34,
         prompt: "As it is used in the third paragraph, the word \"cryoprotectant\" most nearly refers to a substance that:",
         choices: [
           { label: "A", text: "speeds up the freezing of an animal's body." },
@@ -720,8 +648,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 1,
-        formOrder: 35,
         prompt: "The first paragraph functions in the passage primarily to:",
         choices: [
           { label: "A", text: "set the wood frog apart from other northern animals and introduce the striking behavior the passage will explain." },
@@ -738,8 +664,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
         subSkill: "arguments",
         difficulty: 5,
         estimatedTimeSec: 90,
-        diagnosticForm: 1,
-        formOrder: 36,
         prompt: "Which finding, if confirmed by new research, would most directly undermine the passage's explanation of how the wood frog survives freezing?",
         choices: [
           { label: "A", text: "Evidence that wood frogs in contact with damp leaf litter freeze more gradually than frogs on dry ground" },
@@ -759,7 +683,6 @@ The wood frog's trick has limits. It works for frogs that freeze gradually, in c
   {
     subject: "READING",
     passageType: "literary_narrative",
-    diagnosticForm: 2,
     title: "From the novel \"The Lending Library of Small Things\" by Favor Adisa",
     body: `My grandfather kept a notebook he called the Ledger, though it recorded no money. It was a school exercise book, soft at the corners, and into it he wrote, in a hand that grew smaller as the pages filled, every object he had ever lent to a neighbor. A post-hole digger. A roasting pan large enough for a goose. Twelve folding chairs. A ladder. A child's car seat, lent and returned and lent again across what must have been a dozen families. He did not write the dates things came back. He told me once that the Ledger was not a way of keeping track of his property; it was a way of keeping track of his neighbors.
 
@@ -777,8 +700,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 1,
         prompt: "The passage as a whole is best described as an account of:",
         choices: [
           { label: "A", text: "a narrator's gradual financial recovery after a period of poverty." },
@@ -795,8 +716,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "close_reading",
         difficulty: 1,
         estimatedTimeSec: 45,
-        diagnosticForm: 2,
-        formOrder: 2,
         prompt: "According to the passage, the Ledger was kept in:",
         choices: [
           { label: "A", text: "a leather-bound accounting book." },
@@ -813,8 +732,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 3,
         prompt: "As it is used in the third paragraph, the phrase \"a door between two houses\" most nearly refers to:",
         choices: [
           { label: "A", text: "a physical passage connecting neighboring buildings." },
@@ -831,8 +748,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 4,
         prompt: "The contrast in the second paragraph between the friends' ladder \"on two clean hooks\" and the grandfather's borrowed ladder functions primarily to:",
         choices: [
           { label: "A", text: "establish the narrator's early belief that owning things outright is preferable to sharing them." },
@@ -849,8 +764,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "close_reading",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 5,
         prompt: "When the grandfather asks the narrator which neighbors he could call on \"at two in the morning if the house were burning,\" the narrator at first responds by:",
         choices: [
           { label: "A", text: "naming Mrs. Okafor without hesitation." },
@@ -867,8 +780,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "purpose_point_of_view",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 6,
         prompt: "The grandfather's decision not to \"lecture\" the narrator but instead to \"let me sit with the page\" most strongly suggests that he believes:",
         choices: [
           { label: "A", text: "the narrator is too young to be told anything directly." },
@@ -885,8 +796,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "word_meaning",
         difficulty: 4,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 7,
         prompt: "The narrator's mention of \"a strange heat rising in my face\" as he realizes the Ledger is long most nearly conveys a feeling of:",
         choices: [
           { label: "A", text: "anger at his grandfather for embarrassing him." },
@@ -903,8 +812,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "arguments",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 8,
         prompt: "Which detail best supports the grandfather's claim that the Ledger \"was a way of keeping track of his neighbors\" rather than of his property?",
         choices: [
           { label: "A", text: "The notebook was a soft-cornered school exercise book." },
@@ -921,8 +828,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 9,
         prompt: "The passage's final paragraph, in which the narrator notes that his own handwriting \"has begun to grow smaller,\" primarily serves to show that the narrator has:",
         choices: [
           { label: "A", text: "developed a medical condition affecting his hands." },
@@ -943,7 +848,6 @@ I keep the Ledger now. I have added pages. My handwriting, I notice, has begun t
   {
     subject: "READING",
     passageType: "humanities",
-    diagnosticForm: 2,
     title: "From \"The Unfinished Note\" by Esteban Ruelas, an essay on musical improvisation",
     body: `There is a widespread idea that a piece of written music is the real thing and a performance of it is only a copy — a more or less faithful attempt to reproduce what the composer fixed on the page. Improvised music unsettles this idea. In an improvised performance there is no page that came first. The music exists only in the moment it is made, and it is gone, in its exact form, the instant it is finished. For a long time this made improvisation seem, to writers about music, a lesser art: brilliant perhaps, but unrepeatable, and therefore impossible to study with the care given to a written score.
 
@@ -961,8 +865,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 10,
         prompt: "The central idea of the passage is that:",
         choices: [
           { label: "A", text: "improvised music is inferior to written music because it cannot be studied." },
@@ -979,8 +881,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 11,
         prompt: "When the author writes that a score \"is closer to a recipe than to a meal,\" he is making the point that a score is:",
         choices: [
           { label: "A", text: "a set of instructions rather than the experienced music itself." },
@@ -997,8 +897,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "visual_quantitative",
         difficulty: 2,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 12,
         prompt: "Based on the study described in the fourth paragraph, which group gave the recorded solo the highest average rating for sounding \"carefully constructed\"?",
         choices: [
           { label: "A", text: "The group that heard the solo only once" },
@@ -1015,8 +913,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "visual_quantitative",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 13,
         prompt: "The author uses the results of the study primarily to support the point that:",
         choices: [
           { label: "A", text: "listeners always prefer recorded music to live performance." },
@@ -1033,8 +929,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 2,
-        formOrder: 14,
         prompt: "According to the passage, an improvising jazz musician draws on:",
         choices: [
           { label: "A", text: "nothing but pure spontaneous invention." },
@@ -1051,8 +945,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 15,
         prompt: "The second paragraph functions in the passage primarily to:",
         choices: [
           { label: "A", text: "identify and correct the mistaken assumption behind the low regard for improvisation." },
@@ -1069,8 +961,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "purpose_point_of_view",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 16,
         prompt: "The author would most likely agree that the \"freedom\" of a skilled improviser is best understood as:",
         choices: [
           { label: "A", text: "the absence of any rules, training, or constraint." },
@@ -1087,8 +977,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "arguments",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 17,
         prompt: "Which statement, if true, would most strengthen the author's claim that \"the page... was never what made study possible. Repetition was\"?",
         choices: [
           { label: "A", text: "Scholars were able to analyze the structure of improvised solos in detail only once recordings allowed those solos to be replayed." },
@@ -1105,8 +993,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 18,
         prompt: "According to the passage, what was the effect of recording technology on the standing of improvised music?",
         choices: [
           { label: "A", text: "It made improvisers perform more carefully than they had before." },
@@ -1127,7 +1013,6 @@ This is the quiet revolution that recording brought to improvised music. It did 
   {
     subject: "READING",
     passageType: "social_science",
-    diagnosticForm: 2,
     title: "Paired Passages: On the Naming of Streets",
     body: `Passage A is adapted from a report by the urban geographer Lena Mbeki. Passage B is adapted from an essay by the historian Curtis Hahn.
 
@@ -1153,8 +1038,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "purpose_point_of_view",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 19,
         prompt: "The central purpose of Passage A is to:",
         choices: [
           { label: "A", text: "argue that street renaming, though not sufficient on its own, makes a real change worth taking seriously." },
@@ -1171,8 +1054,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 20,
         prompt: "In Passage A, Mbeki repeatedly calls a street name an \"instruction\" in order to emphasize that street names:",
         choices: [
           { label: "A", text: "are legally binding orders that residents must obey." },
@@ -1189,8 +1070,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 2,
-        formOrder: 21,
         prompt: "In Passage B, Hahn argues that a plaque explaining a contested street name is valuable because it:",
         choices: [
           { label: "A", text: "increases the property values of the surrounding neighborhood." },
@@ -1207,8 +1086,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "purpose_point_of_view",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 22,
         prompt: "Hahn's central concern in Passage B is that street renaming:",
         choices: [
           { label: "A", text: "is too expensive for most cities to carry out responsibly." },
@@ -1225,8 +1102,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 23,
         prompt: "Which of the following best describes the relationship between the two passages?",
         choices: [
           { label: "A", text: "Passage B provides statistical evidence that confirms the argument of Passage A." },
@@ -1243,8 +1118,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "multiple_texts",
         difficulty: 4,
         estimatedTimeSec: 85,
-        diagnosticForm: 2,
-        formOrder: 24,
         prompt: "Both Mbeki and Hahn would most likely agree with which of the following statements?",
         choices: [
           { label: "A", text: "The names a city puts on its streets meaningfully shape how the public thinks." },
@@ -1261,8 +1134,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "multiple_texts",
         difficulty: 5,
         estimatedTimeSec: 90,
-        diagnosticForm: 2,
-        formOrder: 25,
         prompt: "How would Hahn most likely respond to Mbeki's claim that renaming a street, while \"not sufficient,\" is nonetheless a \"real\" correction?",
         choices: [
           { label: "A", text: "He would agree that renaming is real but warn that, by removing the troubling name, it can erase the very question a reckoning requires." },
@@ -1279,8 +1150,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "arguments",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 26,
         prompt: "In Passage A, Mbeki anticipates and answers a possible objection to her argument. That objection is that:",
         choices: [
           { label: "A", text: "renaming streets is far too costly for cities to undertake." },
@@ -1297,8 +1166,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 27,
         prompt: "The final paragraph of Passage B functions primarily to:",
         choices: [
           { label: "A", text: "concede a point to Mbeki while turning it to support Hahn's own contrary conclusion." },
@@ -1319,7 +1186,6 @@ Mbeki is right that street names are instructions. But an instruction can also b
   {
     subject: "READING",
     passageType: "natural_science",
-    diagnosticForm: 2,
     title: "From \"The Listening Roots\" by Dr. Hollis Tran, on communication among trees",
     body: `For most of the history of forest science, a tree was studied as an individual. A forester measured a single trunk, counted a single crown of leaves, and treated the soil mainly as a reservoir of water and minerals that each tree drew on alone. The forest was understood as a crowd of competitors, every tree reaching for the same light and the same nutrients, and a forest's health was the sum of many separate struggles.
 
@@ -1337,8 +1203,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "central_ideas",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 28,
         prompt: "The main idea of the passage is that:",
         choices: [
           { label: "A", text: "forest trees compete so fiercely that weaker trees rarely survive." },
@@ -1355,8 +1219,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "close_reading",
         difficulty: 2,
         estimatedTimeSec: 55,
-        diagnosticForm: 2,
-        formOrder: 29,
         prompt: "According to the passage, what do the fungi receive from the trees in their mutual relationship?",
         choices: [
           { label: "A", text: "Water drawn up from deep in the soil" },
@@ -1373,8 +1235,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "sequence_relationships",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 30,
         prompt: "In the carbon-tracer experiment described in the third paragraph, the appearance of the tracer in neighboring trees shows that:",
         choices: [
           { label: "A", text: "the neighboring trees had been physically touching the labeled tree above ground." },
@@ -1391,8 +1251,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "visual_quantitative",
         difficulty: 2,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 31,
         prompt: "Based on the figures reported in the fourth paragraph, which recipient received the largest share of the tracer that left the donor tree?",
         choices: [
           { label: "A", text: "The mature tree in full sun" },
@@ -1409,8 +1267,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "visual_quantitative",
         difficulty: 3,
         estimatedTimeSec: 70,
-        diagnosticForm: 2,
-        formOrder: 32,
         prompt: "The pattern in the transfer figures most directly supports the passage's point that:",
         choices: [
           { label: "A", text: "the trees most in need of sugar tend to receive the most through the network." },
@@ -1427,8 +1283,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "purpose_point_of_view",
         difficulty: 4,
         estimatedTimeSec: 80,
-        diagnosticForm: 2,
-        formOrder: 33,
         prompt: "When Tran \"urges caution\" about reading the transfers as generosity, her point of view is best described as that of a scientist who:",
         choices: [
           { label: "A", text: "doubts that the carbon transfers occur at all." },
@@ -1445,8 +1299,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "word_meaning",
         difficulty: 3,
         estimatedTimeSec: 60,
-        diagnosticForm: 2,
-        formOrder: 34,
         prompt: "As it is used in the final paragraph, the phrase \"the old arithmetic\" most nearly refers to the idea that:",
         choices: [
           { label: "A", text: "a forest's total value can be calculated only by professional foresters." },
@@ -1463,8 +1315,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "text_structure",
         difficulty: 3,
         estimatedTimeSec: 65,
-        diagnosticForm: 2,
-        formOrder: 35,
         prompt: "The first paragraph functions in the passage primarily to:",
         choices: [
           { label: "A", text: "present the older view of the forest that the rest of the passage will revise." },
@@ -1481,8 +1331,6 @@ It is tempting to read this as generosity, and some popular accounts have done s
         subSkill: "arguments",
         difficulty: 5,
         estimatedTimeSec: 90,
-        diagnosticForm: 2,
-        formOrder: 36,
         prompt: "Which finding, if confirmed by new research, would most directly undermine the passage's claim that the fungal network, rather than the donor tree, controls much of the routing of sugar?",
         choices: [
           { label: "A", text: "Evidence that donor trees can actively open or close the flow of sugar to specific neighbors depending on which neighbors they sense" },
