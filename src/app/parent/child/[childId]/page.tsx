@@ -6,10 +6,14 @@ import { Button } from "@/components/ui/button";
 import { AnalyticsDashboard } from "@/components/analytics/analytics-dashboard";
 import { formatRelative, getChildSummary, getWeakestSubSkills } from "@/lib/parent-stats";
 import { getProjectionTrend, projectScores } from "@/lib/scoring";
+import { checkAccess } from "@/lib/access";
 
 export default async function ChildDashboard({ params }: { params: { childId: string } }) {
   const session = await auth();
   if (!session || session.user.role !== "PARENT") redirect("/login");
+
+  const access = await checkAccess(session.user.id, session.user.role);
+  if (!access.hasAccess) redirect("/subscribe");
 
   const link = await prisma.parentChildLink.findUnique({
     where: { parentId_childId: { parentId: session.user.id, childId: params.childId } },

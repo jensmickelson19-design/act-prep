@@ -27,14 +27,24 @@ async function main() {
   const studentHash = await bcrypt.hash("password123", 10);
   const parentHash = await bcrypt.hash("password123", 10);
 
+  // The demo student carries a synthetic active subscription so the demo
+  // works with billing configured; the demo parent is covered via the link
+  // (child pays -> parent gets dashboard access).
   const student = await prisma.user.upsert({
     where: { email: "student@example.com" },
-    update: {},
+    // update as well as create: reseeding an existing DB must also grant the
+    // demo subscription (upsert's create branch doesn't run for existing rows).
+    update: {
+      subscriptionStatus: "active",
+      currentPeriodEnd: new Date("2099-01-01"),
+    },
     create: {
       email: "student@example.com",
       passwordHash: studentHash,
       name: "Demo Student",
       role: "STUDENT",
+      subscriptionStatus: "active",
+      currentPeriodEnd: new Date("2099-01-01"),
     },
   });
 

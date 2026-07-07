@@ -40,6 +40,15 @@ model User {
   role         Role
   createdAt    DateTime @default(now())
 
+  // Stripe subscription state (webhooks are the source of truth).
+  // A PARENT's subscription covers exactly one linked child (coveredChildId).
+  // A STUDENT's subscription covers themselves and grants their linked
+  // parents dashboard access. See src/lib/access.ts.
+  stripeCustomerId   String?   @unique
+  subscriptionStatus String?
+  currentPeriodEnd   DateTime?
+  coveredChildId     String?
+
   attempts        Attempt[]
   studySessions   StudySession[]
   testAttempts    TestAttempt[]

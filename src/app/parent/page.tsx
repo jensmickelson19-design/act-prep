@@ -5,10 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getChildSummary, formatDuration, formatRelative } from "@/lib/parent-stats";
 import { projectScores } from "@/lib/scoring";
+import { checkAccess } from "@/lib/access";
+import { redirect } from "next/navigation";
 
 export default async function ParentHome() {
   const session = await auth();
   if (!session) return null;
+
+  const access = await checkAccess(session.user.id, session.user.role);
+  if (!access.hasAccess) redirect("/subscribe");
 
   const links = await prisma.parentChildLink.findMany({
     where: { parentId: session.user.id },
