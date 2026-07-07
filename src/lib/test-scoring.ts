@@ -23,13 +23,15 @@ import { ACT_SECTIONS } from "@/lib/test-format";
 // never an official ACT score, and surface it with that disclaimer.
 // ---------------------------------------------------------------------------
 
-// Difficulty 1–5 counts across both seeded diagnostic forms, measured per
-// subject. Re-measure and update if the diagnostic content is re-authored.
+// Difficulty 1–5 counts per subject, measured from fixed Practice Test Form 1
+// (prisma/seed-data/form1-*.ts). Sums equal the ACT section sizes (50/45/36/40).
+// Re-measure and update if Form 1 content is re-authored; extend to average
+// across forms when Form 2 lands.
 const DIAGNOSTIC_DIFFICULTY_MIX: Record<Subject, number[]> = {
-  ENGLISH: [4, 18, 58, 19, 1],
-  MATH: [8, 12, 50, 16, 4],
-  READING: [2, 11, 42, 13, 4],
-  SCIENCE: [11, 11, 35, 20, 3],
+  ENGLISH: [0, 4, 31, 15, 0],
+  MATH: [4, 6, 20, 12, 3],
+  READING: [0, 6, 17, 11, 2],
+  SCIENCE: [2, 7, 18, 12, 1],
 };
 
 // Nominal mix used by the accuracy-only fallback for non-canonical sections.
