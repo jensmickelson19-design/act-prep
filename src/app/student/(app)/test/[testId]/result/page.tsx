@@ -23,7 +23,7 @@ export default async function TestResultPage({ params }: { params: { testId: str
   const review = await reviewTest(test.id);
 
   return (
-    <main className="container max-w-3xl space-y-6 py-12">
+    <div className="mx-auto max-w-3xl space-y-6">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Practice test results</h1>
         <p className="text-muted-foreground">
@@ -170,7 +170,7 @@ export default async function TestResultPage({ params }: { params: { testId: str
           <Link href="/student/test">Take another test</Link>
         </Button>
       </div>
-    </main>
+    </div>
   );
 }
 
