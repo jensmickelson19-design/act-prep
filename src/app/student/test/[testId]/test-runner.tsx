@@ -28,6 +28,12 @@ type SafeQuestion = {
 type TestState =
   | { status: "COMPLETED" }
   | {
+      status: "PAUSED";
+      testId: string;
+      currentSection: Subject;
+      pausedRemainingSec: number;
+    }
+  | {
       status: "IN_PROGRESS";
       testId: string;
       withScience: boolean;
@@ -140,6 +146,29 @@ export function TestRunner({ testId }: { testId: string }) {
     setAdvancing(false);
   }, [state, testId, loadState]);
 
+  // Save & exit: pause (freeze the section clock) and leave.
+  const saveAndExit = useCallback(async () => {
+    if (!state || state.status !== "IN_PROGRESS") return;
+    setAdvancing(true);
+    await fetch("/api/test/pause", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ testId }),
+    });
+    router.push("/student/test");
+  }, [state, testId, router]);
+
+  const resume = useCallback(async () => {
+    setAdvancing(true);
+    await fetch("/api/test/resume", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ testId }),
+    });
+    await loadState();
+    setAdvancing(false);
+  }, [testId, loadState]);
+
   if (error) {
     return (
       <main className="container py-12">
@@ -156,6 +185,30 @@ export function TestRunner({ testId }: { testId: string }) {
   }
   if (state.status === "COMPLETED") {
     return null; // already redirected
+  }
+
+  if (state.status === "PAUSED") {
+    return (
+      <main className="container max-w-md space-y-4 py-16 text-center">
+        <h1 className="text-2xl font-bold">Test paused</h1>
+        <p className="text-muted-foreground">
+          You have{" "}
+          <span className="font-semibold text-foreground">
+            {formatRemaining(state.pausedRemainingSec * 1000)}
+          </span>{" "}
+          left in the {SUBJECT_LABEL[state.currentSection]} section. The timer is frozen
+          until you resume.
+        </p>
+        <div className="flex flex-col gap-2">
+          <Button onClick={resume} disabled={advancing}>
+            {advancing ? "Resuming…" : "Resume test"}
+          </Button>
+          <Button variant="ghost" onClick={() => router.push("/student/test")}>
+            Not now
+          </Button>
+        </div>
+      </main>
+    );
   }
 
   const remaining = new Date(state.sectionDeadline).getTime() - now;
@@ -199,15 +252,19 @@ export function TestRunner({ testId }: { testId: string }) {
             >
               {formatRemaining(remaining)}
             </div>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={advance}
-              disabled={advancing}
-              className="mt-1"
-            >
-              End section
-            </Button>
+            <div className="mt-1 flex justify-end gap-2">
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={saveAndExit}
+                disabled={advancing}
+              >
+                Save &amp; exit
+              </Button>
+              <Button size="sm" variant="outline" onClick={advance} disabled={advancing}>
+                End section
+              </Button>
+            </div>
           </div>
         </div>
       </header>

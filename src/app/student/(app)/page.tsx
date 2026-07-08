@@ -98,9 +98,12 @@ export default async function StudentHome() {
             2h 5m without Science · 2h 45m with Science.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-wrap gap-3">
           <Button asChild>
             <Link href="/student/test">Start a practice test</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/student/test/history">Review past tests</Link>
           </Button>
         </CardContent>
       </Card>
