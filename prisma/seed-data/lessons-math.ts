@@ -17,7 +17,7 @@ export const mathLessons: SeedLesson[] = [
     title: "Working with Numbers: Operations and Place Value",
     summary:
       "This lesson covers the fundamental operations — addition, subtraction, multiplication, and division — applied to whole numbers, decimals, and fractions, along with rounding, place value, and ordering numbers. These skills are the foundation for every calculation on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 Number operations are the building blocks of all ACT Math. You'll need to add, subtract, multiply, and divide whole numbers, fractions, and decimals accurately and efficiently. You also need to understand **place value** (the value of each digit's position), **rounding** (approximating a number to a specified place), and **ordering** (comparing numbers on a number line).
 
@@ -83,7 +83,7 @@ When a problem involves mixed numbers (like $2\frac{3}{4}$), convert to improper
     title: "Exponents, Roots, and Scientific Notation",
     summary:
       "This lesson covers the laws of exponents, square and higher roots, rational exponents, and scientific notation. Mastering these rules lets you simplify expressions quickly and work with very large or very small numbers efficiently.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Exponents** are shorthand for repeated multiplication: $a^n$ means multiply $a$ by itself $n$ times. **Roots** are the inverse: $\sqrt[n]{a}$ asks what number, raised to the $n$th power, gives $a$. **Scientific notation** expresses very large or very small numbers as a product of a number between 1 and 10 and a power of 10.
 
@@ -147,7 +147,7 @@ When an expression has multiple exponent rules to apply, work from the inside ou
     title: "Absolute Value, Complex Numbers, and Matrices",
     summary:
       "This lesson introduces absolute value (distance from zero on the number line), complex numbers (numbers involving $i = \\sqrt{-1}$), and matrices (rectangular arrays of numbers used to organize data and perform operations).",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 The ACT occasionally ventures beyond the real number line into more advanced number concepts. **Absolute value** measures distance without regard to direction. **Complex numbers** extend the real numbers to include $i = \sqrt{-1}$, allowing us to take square roots of negative numbers. **Matrices** are grids of numbers that follow their own rules for addition and multiplication.
 
@@ -214,7 +214,7 @@ For powers of $i$ beyond $i^4$, divide the exponent by 4 and look at the remaind
     title: "Expressions and Polynomials",
     summary:
       "This lesson covers simplifying algebraic expressions by combining like terms, adding, subtracting, and multiplying polynomials, and factoring — including factoring out the GCF and factoring quadratics. These techniques appear in nearly every ACT algebra problem.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 An **expression** is a mathematical phrase with numbers, variables, and operations but no equals sign. A **polynomial** is a specific type of expression made up of terms with non-negative integer exponents. Polynomial work forms the backbone of algebra on the ACT.
 
@@ -284,7 +284,7 @@ When factoring, always start by checking for a GCF. Then identify the structure:
     title: "Solving Linear Equations and Systems",
     summary:
       "This lesson covers solving one-variable linear equations by isolating the variable, and solving systems of two linear equations using substitution or elimination. These are among the most tested algebra skills on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 A **linear equation** is an equation in which every variable has an exponent of 1 (no squares, no square roots). Solving one means isolating the variable on one side of the equals sign. A **system of linear equations** is two or more equations with two or more variables that must be satisfied simultaneously.
 
@@ -358,7 +358,7 @@ For systems, choose substitution when one equation is already solved for a varia
     title: "Inequalities and Their Graphs",
     summary:
       "This lesson covers solving linear inequalities, compound inequalities, and absolute-value inequalities, and interpreting their solutions on a number line or coordinate plane. The critical rule: multiplying or dividing by a negative number flips the inequality sign.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 An **inequality** states that two expressions are not equal — one is greater than, less than, greater than or equal to, or less than or equal to the other. Solving an inequality produces a range of values (a solution set) rather than a single answer. Graphing that solution set on a number line or coordinate plane is a key skill.
 
@@ -425,7 +425,7 @@ At the end of an inequality problem, test a value in your solution set in the or
     title: "Quadratic Equations and Inequalities",
     summary:
       "This lesson covers solving quadratic equations by factoring, completing the square, and the quadratic formula, as well as interpreting the discriminant and solving quadratic inequalities. Quadratics are one of the most heavily tested algebra topics on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 A **quadratic equation** has the form $ax^2 + bx + c = 0$ (with $a \neq 0$). Its solutions (called **roots** or **zeros**) are the $x$-values where the parabola crosses the $x$-axis. You should know three methods for finding them, and you should understand the **discriminant** — the part of the quadratic formula that tells you how many real solutions exist.
 
@@ -497,7 +497,7 @@ Always try factoring first — it's the fastest method if it works. If the quadr
     title: "Understanding Functions: Notation, Domain, and Range",
     summary:
       "This lesson explains what a function is, how to use function notation like $f(x)$, how to evaluate functions, how to find domain and range, and how to work with composite functions. Functions are a central topic across multiple ACT reporting categories.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 A **function** is a rule that assigns exactly one output to each input. If you put a value in, you get exactly one value out. Function notation $f(x)$ (read "f of x") means the output of function $f$ when the input is $x$.
 
@@ -561,7 +561,7 @@ When evaluating a composite function, work from the inside out. Evaluate the inn
     title: "Graphing Functions and Transformations",
     summary:
       "This lesson covers how to recognize and sketch the graphs of common functions (linear, quadratic, absolute value, square root), how transformations (shifts, stretches, and reflections) change a graph, and how to identify asymptotes and match graphs to equations.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Graphing functions** means connecting an algebraic rule to its visual picture in the coordinate plane. **Transformations** let you predict how a graph changes when you modify the equation — shifting it left, right, up, or down, stretching it, or flipping it. This is a critical skill because many ACT problems give you a graph and ask you to find or identify the matching equation, or vice versa.
 
@@ -631,7 +631,7 @@ Build a transformation step by step: start with the parent function, apply horiz
     title: "Arithmetic and Geometric Sequences",
     summary:
       "This lesson covers arithmetic sequences (where a constant is added each term) and geometric sequences (where each term is multiplied by a constant ratio), including how to find specific terms, sums, and how to write recursive and explicit formulas.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 A **sequence** is an ordered list of numbers following a pattern. The two most common types on the ACT are **arithmetic** (add or subtract the same amount each time) and **geometric** (multiply by the same number each time).
 
@@ -701,7 +701,7 @@ If a sequence problem gives you two non-consecutive terms, set up a system: use 
     title: "Trigonometry: The Unit Circle and Trig Functions",
     summary:
       "This lesson covers the definitions of sine, cosine, and tangent using the unit circle and right triangles, key angle values, basic trig identities, and the graphs of trig functions including period and amplitude. Trig appears on the harder portion of the ACT Math test.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Trigonometry** studies the relationships between angles and sides. The ACT tests trig in the context of right triangles and the unit circle (a circle of radius 1 centered at the origin). Knowing the definitions, key values, and a few identities will carry you through most trig questions.
 
@@ -779,7 +779,7 @@ Draw a quick unit circle sketch for reference when you need it. Memorize the "sp
     title: "Angles, Triangles, and Polygons",
     summary:
       "This lesson covers angle relationships (vertical, supplementary, complementary, parallel-line angles), triangle properties (angle sum, exterior angles, triangle inequality), and area and perimeter formulas for common polygons. Plane geometry is the largest geometry topic on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Plane geometry** is the study of flat shapes and their properties. On the ACT, you'll work with angles formed by intersecting or parallel lines, properties of triangles (including special triangles), and area and perimeter formulas for polygons.
 
@@ -853,7 +853,7 @@ When a geometry problem gives you a figure, mark every angle you can determine f
     title: "Points, Lines, and Curves on the Coordinate Plane",
     summary:
       "This lesson covers the distance formula, midpoint formula, slope, equations of lines (slope-intercept and point-slope), and the equations of parabolas and circles in the coordinate plane. Coordinate geometry bridges algebra and geometry on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Coordinate geometry** uses the $xy$-plane to describe geometric figures algebraically. Every line, curve, and shape can be expressed as an equation, and every equation can be visualized as a shape. Mastering the key formulas connects the two worlds.
 
@@ -924,7 +924,7 @@ For circle problems, complete the square if the equation is not in standard form
     title: "Volume and Surface Area of 3-D Figures",
     summary:
       "This lesson covers the volume and surface area formulas for prisms, cylinders, pyramids, cones, and spheres, along with how to apply these formulas to composite figures and word problems. Three-dimensional geometry appears consistently on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Solid geometry** extends plane geometry into three dimensions. **Volume** measures how much space a figure occupies (cubic units). **Surface area** measures the total area of all outer faces (square units). Memorizing the key formulas and knowing when to apply them is the core skill.
 
@@ -991,7 +991,7 @@ For surface area problems, visualize "unfolding" the shape into a flat net. Each
     title: "Right Triangles: Pythagorean Theorem and SOHCAHTOA",
     summary:
       "This lesson covers the Pythagorean theorem, the special right triangles (30-60-90 and 45-45-90), the SOHCAHTOA definitions of sine, cosine, and tangent in right triangles, and how to find missing sides and angles. These tools appear in both geometry and trigonometry questions.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 A **right triangle** has one angle of exactly $90°$. The side opposite the right angle (the longest side) is called the **hypotenuse**. The **Pythagorean theorem** and **SOHCAHTOA** are the two essential tools for working with right triangles.
 
@@ -1058,7 +1058,7 @@ Draw and label the triangle before computing. Mark the right angle, label the gi
     title: "Mean, Median, Mode, and Reading Data Displays",
     summary:
       "This lesson covers computing the mean, median, and mode of a data set, understanding weighted averages, and reading and interpreting bar graphs, histograms, pie charts, scatterplots, and frequency tables. Data and statistics questions appear throughout the ACT Math section.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Statistics** is the study of how to collect, organize, and summarize data. On the ACT, you need to calculate measures of center (mean, median, mode), handle weighted averages, and extract information from various types of data displays.
 
@@ -1128,7 +1128,7 @@ For "find the missing value" problems using the mean: total sum = mean × count.
     title: "Probability and Counting Techniques",
     summary:
       "This lesson covers basic probability (favorable outcomes over total outcomes), compound events (AND and OR), conditional probability, combinations, permutations, and Venn diagrams. Probability and counting questions are a reliable part of the ACT Math section.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Probability** measures how likely an event is, expressed as a fraction, decimal, or percent between 0 (impossible) and 1 (certain). **Counting techniques** give you the tools to count large sets of outcomes without listing them one by one.
 
@@ -1198,7 +1198,7 @@ For "at least one" probability problems, it is almost always faster to compute $
     title: "Rates, Proportions, Percents, and Multi-Step Problems",
     summary:
       "This lesson covers setting up and solving real-world problems involving rates (distance, speed, time), proportions, percent change, unit conversion, and multi-step scenarios. These 'integrating essential skills' problems are the most practical math on the ACT.",
-    body: `## What This Skill Is
+    body: String.raw`## What This Skill Is
 
 **Word problems** require you to translate a real-world scenario into mathematical language, choose the right approach, and carry out the computation accurately. The most common types involve rates, proportions, and percents — skills you've used throughout school, now applied in multi-step contexts.
 
