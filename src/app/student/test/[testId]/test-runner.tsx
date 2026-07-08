@@ -162,6 +162,22 @@ export function TestRunner({ testId }: { testId: string }) {
   const q = state.questions[currentIdx];
   const answeredCount = state.questions.filter((qq) => state.answers[qq.id]).length;
 
+  // Defensive: a section with no questions (e.g. an unseeded database) would
+  // otherwise crash on q.* below. Show a message and let the student advance.
+  if (!q) {
+    return (
+      <main className="container max-w-2xl py-12 text-center">
+        <p className="text-muted-foreground">
+          This section has no questions to display. This usually means the question bank
+          hasn&apos;t been loaded yet.
+        </p>
+        <Button variant="outline" className="mt-4" onClick={advance} disabled={advancing}>
+          {advancing ? "…" : "Skip this section"}
+        </Button>
+      </main>
+    );
+  }
+
   return (
     <main className="container max-w-6xl space-y-4 py-6">
       <header className="sticky top-0 z-10 -mx-4 border-b bg-background/95 px-4 py-3 backdrop-blur">
