@@ -64,6 +64,16 @@ export async function GET(req: Request) {
     return NextResponse.json({ status: "COMPLETED" });
   }
 
+  if (test.status === "PAUSED") {
+    // Clock is frozen; the client shows a Resume panel instead of questions.
+    return NextResponse.json({
+      status: "PAUSED",
+      testId: test.id,
+      currentSection: test.currentSection,
+      pausedRemainingSec: test.pausedRemainingSec ?? 0,
+    });
+  }
+
   const questionsBySection = test.questionsBySection as Record<Subject, string[]>;
   const ids = questionsBySection[test.currentSection!] ?? [];
   const questions = await prisma.question.findMany({

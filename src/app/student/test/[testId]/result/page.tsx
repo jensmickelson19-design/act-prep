@@ -4,7 +4,12 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { scoreTest } from "@/lib/test-scoring";
+import { PassageBody } from "@/components/passage-body";
+import { FigureView } from "@/components/figure-view";
+import { MathText } from "@/components/math-text";
+import { asFigures } from "@/lib/figures";
+import { scoreTest, reviewTest, type ReviewQuestion } from "@/lib/test-scoring";
+import { cn } from "@/lib/utils";
 
 export default async function TestResultPage({ params }: { params: { testId: string } }) {
   const session = await auth();
@@ -15,6 +20,7 @@ export default async function TestResultPage({ params }: { params: { testId: str
   if (test.status !== "COMPLETED") redirect(`/student/test/${test.id}`);
 
   const result = await scoreTest(test.id);
+  const review = await reviewTest(test.id);
 
   return (
     <main className="container max-w-3xl space-y-6 py-12">
@@ -123,15 +129,116 @@ export default async function TestResultPage({ params }: { params: { testId: str
         </CardContent>
       </Card>
 
+      {/* Question-by-question review */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Review questions</CardTitle>
+          <CardDescription>
+            See every question with your answer, the correct answer, and an explanation.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {review.map((section) => {
+            const correct = section.questions.filter((q) => q.isCorrect).length;
+            return (
+              <details key={section.subject} className="group rounded-lg border bg-muted/30">
+                <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 font-medium [&::-webkit-details-marker]:hidden">
+                  <span>{section.subject.charAt(0) + section.subject.slice(1).toLowerCase()}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {correct}/{section.questions.length} correct
+                  </span>
+                </summary>
+                <div className="space-y-4 border-t px-4 py-4">
+                  {section.questions.map((q, i) => (
+                    <ReviewQuestionCard key={q.id} q={q} index={i} />
+                  ))}
+                </div>
+              </details>
+            );
+          })}
+        </CardContent>
+      </Card>
+
       <div className="flex flex-wrap gap-3">
         <Button asChild>
           <Link href="/student">Back to dashboard</Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link href="/student/test/history">Past tests</Link>
         </Button>
         <Button asChild variant="outline">
           <Link href="/student/test">Take another test</Link>
         </Button>
       </div>
     </main>
+  );
+}
+
+function ReviewQuestionCard({ q, index }: { q: ReviewQuestion; index: number }) {
+  return (
+    <div className="rounded-md border bg-background p-4">
+      <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
+        <span>Question {index + 1}</span>
+        <span
+          className={cn(
+            "rounded px-2 py-0.5 font-medium",
+            q.isCorrect
+              ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200"
+              : "bg-destructive/10 text-destructive"
+          )}
+        >
+          {q.selected == null ? "Not answered" : q.isCorrect ? "Correct" : "Incorrect"}
+        </span>
+      </div>
+
+      {q.passage && (
+        <div className="mb-3 rounded-md border bg-muted/30 p-3">
+          {q.passage.title && <p className="mb-1 text-sm font-semibold">{q.passage.title}</p>}
+          <PassageBody
+            body={q.passage.body}
+            figures={asFigures(q.passage.figures)}
+            activeMarker={q.formOrder}
+          />
+        </div>
+      )}
+
+      <p className="mb-2 text-sm">
+        <MathText>{q.prompt}</MathText>
+      </p>
+      {asFigures(q.figures).map((f) => (
+        <FigureView key={f.id} figure={f} />
+      ))}
+
+      <div className="space-y-1.5">
+        {q.choices.map((c) => {
+          const isCorrect = c.label === q.correctAnswer;
+          const isSelected = c.label === q.selected;
+          const isWrongPick = isSelected && !isCorrect;
+          return (
+            <div
+              key={c.label}
+              className={cn(
+                "flex items-start gap-2 rounded-md border px-3 py-2 text-sm",
+                isCorrect && "border-emerald-500 bg-emerald-50 dark:bg-emerald-950",
+                isWrongPick && "border-destructive bg-destructive/10"
+              )}
+            >
+              <span className="font-semibold">{c.label}.</span>
+              <span className="flex-1">
+                <MathText>{c.text}</MathText>
+              </span>
+              {isCorrect && <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300">Correct answer</span>}
+              {isWrongPick && <span className="text-xs font-medium text-destructive">Your answer</span>}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-2 rounded-md bg-muted/50 px-3 py-2 text-sm">
+        <span className="font-semibold">Explanation. </span>
+        <MathText>{q.explanation}</MathText>
+      </div>
+    </div>
   );
 }
 

@@ -11,12 +11,19 @@ export default async function TestStartPage() {
   const session = await auth();
   if (!session || session.user.role !== "STUDENT") redirect("/login");
 
-  // If there's an in-progress test, jump straight to it.
+  // A live (unpaused) test has a running clock — send the student straight back.
   const inProgress = await prisma.testAttempt.findFirst({
     where: { userId: session.user.id, status: "IN_PROGRESS" },
     orderBy: { startedAt: "desc" },
   });
   if (inProgress) redirect(`/student/test/${inProgress.id}`);
+
+  // A paused test is offered as a resume card (below) rather than auto-resumed,
+  // so the student can still choose to start fresh.
+  const paused = await prisma.testAttempt.findFirst({
+    where: { userId: session.user.id, status: "PAUSED" },
+    orderBy: { startedAt: "desc" },
+  });
 
   return (
     <main className="container max-w-2xl space-y-8 py-12">
@@ -27,6 +34,32 @@ export default async function TestStartPage() {
           just like the real ACT. Each section begins as soon as the previous one ends.
         </p>
       </header>
+
+      {paused && (
+        <Card className="border-primary/40 bg-primary/5">
+          <CardHeader>
+            <CardTitle>Resume your paused test</CardTitle>
+            <CardDescription>
+              You have a saved test in the{" "}
+              {paused.currentSection
+                ? paused.currentSection.charAt(0) + paused.currentSection.slice(1).toLowerCase()
+                : ""}{" "}
+              section. Your timer is frozen where you left off.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild>
+              <Link href={`/student/test/${paused.id}`}>Resume test</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="flex items-center gap-3">
+        <Link href="/student/test/history" className="text-sm underline underline-offset-4">
+          View past tests
+        </Link>
+      </div>
 
       <Card>
         <CardHeader>

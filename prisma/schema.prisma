@@ -23,6 +23,7 @@ enum Subject {
 
 enum TestStatus {
   IN_PROGRESS
+  PAUSED
   COMPLETED
   ABANDONED
 }
@@ -189,6 +190,9 @@ model TestAttempt {
   withScience        Boolean    @default(true)
   currentSection     Subject?
   sectionDeadline    DateTime?
+  // When PAUSED, the seconds left in currentSection at pause time. Resuming
+  // reconstructs sectionDeadline = now + pausedRemainingSec. Null unless paused.
+  pausedRemainingSec Int?
   questionsBySection Json       @default("{}")
   answers            Json       @default("{}")
   sectionScores      Json?

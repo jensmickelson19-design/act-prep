@@ -173,3 +173,78 @@ export async function scoreTest(testId: string): Promise<TestResult> {
 
   return { compositeScore, sections: sectionResults };
 }
+
+// ---------------------------------------------------------------------------
+// Per-question review data for a completed test. Reuses the same answers ×
+// correctAnswer join as scoreTest, but additionally returns the full question
+// content (prompt/choices/explanation/figures/passage) so the result page can
+// render a study-oriented review, grouped by section in question order.
+// ---------------------------------------------------------------------------
+
+export type ReviewChoice = { label: string; text: string };
+
+export type ReviewQuestion = {
+  id: string;
+  subSkill: string;
+  formOrder: number | null;
+  prompt: string;
+  choices: ReviewChoice[];
+  figures: unknown;
+  passage: { id: string; title: string | null; body: string; figures: unknown } | null;
+  selected: string | null;
+  correctAnswer: string;
+  isCorrect: boolean;
+  explanation: string;
+};
+
+export type ReviewSection = {
+  subject: Subject;
+  questions: ReviewQuestion[];
+};
+
+export async function reviewTest(testId: string): Promise<ReviewSection[]> {
+  const test = await prisma.testAttempt.findUniqueOrThrow({ where: { id: testId } });
+  const answers = test.answers as Record<string, string>;
+  const questionsBySection = test.questionsBySection as Record<Subject, string[]>;
+
+  const sections: ReviewSection[] = [];
+  for (const [subject, qids] of Object.entries(questionsBySection) as [Subject, string[]][]) {
+    if (!qids || qids.length === 0) continue;
+    const rows = await prisma.question.findMany({
+      where: { id: { in: qids } },
+      select: {
+        id: true,
+        subSkill: true,
+        formOrder: true,
+        prompt: true,
+        choices: true,
+        figures: true,
+        correctAnswer: true,
+        explanation: true,
+        passage: { select: { id: true, title: true, body: true, figures: true } },
+      },
+    });
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    const questions: ReviewQuestion[] = [];
+    for (const qid of qids) {
+      const r = byId.get(qid);
+      if (!r) continue;
+      const selected = answers[qid] ?? null;
+      questions.push({
+        id: r.id,
+        subSkill: r.subSkill,
+        formOrder: r.formOrder,
+        prompt: r.prompt,
+        choices: r.choices as ReviewChoice[],
+        figures: r.figures,
+        passage: r.passage,
+        selected,
+        correctAnswer: r.correctAnswer,
+        isCorrect: selected === r.correctAnswer,
+        explanation: r.explanation,
+      });
+    }
+    sections.push({ subject, questions });
+  }
+  return sections;
+}
