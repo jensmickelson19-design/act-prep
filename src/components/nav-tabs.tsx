@@ -49,7 +49,9 @@ export function NavTabs({ tabs, className }: NavTabsProps): JSX.Element {
   return (
     <nav
       className={cn(
-        "flex items-center gap-6 overflow-x-auto whitespace-nowrap font-sans text-sm",
+        // Tabs still scroll horizontally on narrow screens, but the scrollbar
+        // is hidden (.no-scrollbar utility in globals.css).
+        "flex items-center gap-6 overflow-x-auto whitespace-nowrap font-sans text-sm no-scrollbar",
         className
       )}
     >
