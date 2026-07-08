@@ -2,6 +2,8 @@
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { cn } from "@/lib/utils";
 
 export function PassageView({ body, className }: { body: string; className?: string }) {
@@ -12,7 +14,9 @@ export function PassageView({ body, className }: { body: string; className?: str
         className
       )}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
+        {body}
+      </ReactMarkdown>
     </div>
   );
 }

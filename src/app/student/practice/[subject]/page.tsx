@@ -4,7 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { PassageView } from "@/components/passage-view";
+import { PassageBody } from "@/components/passage-body";
+import { FigureView } from "@/components/figure-view";
+import { MathText } from "@/components/math-text";
+import { asFigures } from "@/lib/figures";
 import { cn } from "@/lib/utils";
 
 type Subject = "ENGLISH" | "MATH" | "READING" | "SCIENCE";
@@ -18,7 +21,8 @@ type SafeQuestion = {
   estimatedTimeSec: number;
   prompt: string;
   choices: Choice[];
-  passage: { id: string; title: string | null; body: string } | null;
+  figures?: unknown;
+  passage: { id: string; title: string | null; body: string; figures?: unknown } | null;
 };
 
 type NextResponse =
@@ -293,7 +297,7 @@ export default function PracticePage({ params }: { params: { subject: string } }
   const q = data.question;
 
   return (
-    <main className="container max-w-3xl space-y-4 py-8">
+    <main className="container max-w-6xl space-y-4 py-8">
       <header className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">{SUBJECT_LABEL[subject]} practice</h1>
@@ -320,26 +324,32 @@ export default function PracticePage({ params }: { params: { subject: string } }
         </div>
       )}
 
+      <div className="grid gap-4 lg:grid-cols-2">
       {q.passage && (
-        <Card>
+        <Card className="lg:sticky lg:top-6 lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto">
           <CardHeader>
             {q.passage.title && <CardTitle className="text-lg">{q.passage.title}</CardTitle>}
           </CardHeader>
           <CardContent>
-            <PassageView body={q.passage.body} />
+            <PassageBody body={q.passage.body} figures={asFigures(q.passage.figures)} />
           </CardContent>
         </Card>
       )}
 
-      <Card>
+      <Card className={cn(!q.passage && "lg:col-span-2")}>
         <CardHeader>
           <CardDescription className="flex justify-between">
             <span>{prettySubSkill(q.subSkill)}</span>
             <span>Difficulty {q.difficulty}/5</span>
           </CardDescription>
-          <CardTitle className="text-lg">{q.prompt}</CardTitle>
+          <CardTitle className="text-lg">
+            <MathText>{q.prompt}</MathText>
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
+          {asFigures(q.figures).map((f) => (
+            <FigureView key={f.id} figure={f} />
+          ))}
           {q.choices.map((c, idx) => {
             const isSelected = selected === c.label;
             const isAnswered = !!result;
@@ -359,7 +369,9 @@ export default function PracticePage({ params }: { params: { subject: string } }
                 )}
               >
                 <span className="font-semibold">{c.label}.</span>
-                <span className="flex-1">{c.text}</span>
+                <span className="flex-1">
+                  <MathText>{c.text}</MathText>
+                </span>
                 <span className="text-xs text-muted-foreground" aria-hidden>
                   {idx + 1}
                 </span>
@@ -378,7 +390,9 @@ export default function PracticePage({ params }: { params: { subject: string } }
                 )}
               >
                 <strong>{result.isCorrect ? "Correct." : `Not quite — the answer is ${result.correctAnswer}.`}</strong>
-                <p className="mt-1 text-sm">{result.explanation}</p>
+                <p className="mt-1 text-sm">
+                  <MathText>{result.explanation}</MathText>
+                </p>
               </div>
               <Button onClick={next} className="w-full">
                 Next question <span className="ml-2 text-xs opacity-70">(Enter)</span>
@@ -397,6 +411,7 @@ export default function PracticePage({ params }: { params: { subject: string } }
           )}
         </CardContent>
       </Card>
+      </div>
     </main>
   );
 }

@@ -4,7 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { PassageView } from "@/components/passage-view";
+import { PassageBody } from "@/components/passage-body";
+import { FigureView } from "@/components/figure-view";
+import { MathText } from "@/components/math-text";
+import { asFigures } from "@/lib/figures";
 import { cn } from "@/lib/utils";
 
 type Subject = "ENGLISH" | "MATH" | "READING" | "SCIENCE";
@@ -15,9 +18,11 @@ type SafeQuestion = {
   subject: Subject;
   subSkill: string;
   difficulty: number;
+  formOrder: number | null;
   prompt: string;
   choices: Choice[];
-  passage: { id: string; title: string | null; body: string } | null;
+  figures: unknown;
+  passage: { id: string; title: string | null; body: string; figures: unknown } | null;
 };
 
 type TestState =
@@ -158,7 +163,7 @@ export function TestRunner({ testId }: { testId: string }) {
   const answeredCount = state.questions.filter((qq) => state.answers[qq.id]).length;
 
   return (
-    <main className="container max-w-3xl space-y-4 py-6">
+    <main className="container max-w-6xl space-y-4 py-6">
       <header className="sticky top-0 z-10 -mx-4 border-b bg-background/95 px-4 py-3 backdrop-blur">
         <div className="flex items-center justify-between">
           <div>
@@ -198,59 +203,72 @@ export function TestRunner({ testId }: { testId: string }) {
         onJump={setCurrentIdx}
       />
 
-      {q.passage && (
-        <Card>
-          <CardContent className="pt-6">
-            {q.passage.title && (
-              <p className="mb-2 text-sm font-semibold">{q.passage.title}</p>
-            )}
-            <PassageView body={q.passage.body} />
+      <div className="grid gap-4 lg:grid-cols-2">
+        {q.passage && (
+          <Card className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-y-auto">
+            <CardContent className="pt-6">
+              {q.passage.title && (
+                <p className="mb-2 text-sm font-semibold">{q.passage.title}</p>
+              )}
+              <PassageBody
+                body={q.passage.body}
+                figures={asFigures(q.passage.figures)}
+                activeMarker={q.subject === "ENGLISH" ? q.formOrder : null}
+              />
+            </CardContent>
+          </Card>
+        )}
+
+        <Card className={cn(!q.passage && "lg:col-span-2")}>
+          <CardContent className="space-y-3 pt-6">
+            <div className="text-xs text-muted-foreground">
+              Question {currentIdx + 1} of {state.questions.length}
+            </div>
+            <p className="text-base">
+              <MathText>{q.prompt}</MathText>
+            </p>
+            {asFigures(q.figures).map((f) => (
+              <FigureView key={f.id} figure={f} />
+            ))}
+            {q.choices.map((c) => {
+              const selected = state.answers[q.id] === c.label;
+              return (
+                <button
+                  key={c.label}
+                  onClick={() => submitAnswer(q.id, c.label)}
+                  className={cn(
+                    "flex w-full items-start gap-3 rounded-md border px-4 py-3 text-left transition-colors hover:bg-accent",
+                    selected && "border-primary bg-primary/5"
+                  )}
+                >
+                  <span className="font-semibold">{c.label}.</span>
+                  <span className="flex-1">
+                    <MathText>{c.text}</MathText>
+                  </span>
+                </button>
+              );
+            })}
+            <div className="flex justify-between pt-2">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentIdx((i) => Math.max(0, i - 1))}
+                disabled={currentIdx === 0}
+              >
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  setCurrentIdx((i) => Math.min(state.questions.length - 1, i + 1))
+                }
+                disabled={currentIdx === state.questions.length - 1}
+              >
+                Next
+              </Button>
+            </div>
           </CardContent>
         </Card>
-      )}
-
-      <Card>
-        <CardContent className="space-y-3 pt-6">
-          <div className="text-xs text-muted-foreground">
-            Question {currentIdx + 1} of {state.questions.length}
-          </div>
-          <p className="text-base">{q.prompt}</p>
-          {q.choices.map((c) => {
-            const selected = state.answers[q.id] === c.label;
-            return (
-              <button
-                key={c.label}
-                onClick={() => submitAnswer(q.id, c.label)}
-                className={cn(
-                  "flex w-full items-start gap-3 rounded-md border px-4 py-3 text-left transition-colors hover:bg-accent",
-                  selected && "border-primary bg-primary/5"
-                )}
-              >
-                <span className="font-semibold">{c.label}.</span>
-                <span className="flex-1">{c.text}</span>
-              </button>
-            );
-          })}
-          <div className="flex justify-between pt-2">
-            <Button
-              variant="outline"
-              onClick={() => setCurrentIdx((i) => Math.max(0, i - 1))}
-              disabled={currentIdx === 0}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() =>
-                setCurrentIdx((i) => Math.min(state.questions.length - 1, i + 1))
-              }
-              disabled={currentIdx === state.questions.length - 1}
-            >
-              Next
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      </div>
     </main>
   );
 }

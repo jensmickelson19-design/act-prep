@@ -8,7 +8,7 @@ const REMEDIATION_TARGET_STREAK = 3;
 const REMEDIATION_MAX_ATTEMPTS = 5;
 
 export type QuestionWithPassage = Question & {
-  passage: Pick<Passage, "id" | "title" | "body"> | null;
+  passage: Pick<Passage, "id" | "title" | "body" | "figures"> | null;
 };
 
 export type NextQuestionResult =
@@ -77,8 +77,11 @@ async function pickSimilar(
       subSkill: missed.subSkill,
       id: { notIn: seen },
       difficulty: { gte: missed.difficulty - 1, lte: missed.difficulty + 1 },
+      // Fixed practice-test forms are reserved for tests — drills draw from
+      // the bank only.
+      diagnosticForm: null,
     },
-    include: { passage: { select: { id: true, title: true, body: true } } },
+    include: { passage: { select: { id: true, title: true, body: true, figures: true } } },
   });
   if (candidates.length === 0) return null;
   candidates.sort(
@@ -97,7 +100,7 @@ async function pickFromWeakestSubSkill(
 
   const available = await prisma.question.groupBy({
     by: ["subSkill"],
-    where: { subject, id: { notIn: seen } },
+    where: { subject, id: { notIn: seen }, diagnosticForm: null },
     _count: { _all: true },
   });
   if (available.length === 0) return null;
@@ -117,8 +120,8 @@ async function pickFromWeakestSubSkill(
   const targetDifficulty = Math.max(1, Math.min(5, Math.round(target.score * 4) + 1));
 
   const pool = await prisma.question.findMany({
-    where: { subject, subSkill: target.subSkill, id: { notIn: seen } },
-    include: { passage: { select: { id: true, title: true, body: true } } },
+    where: { subject, subSkill: target.subSkill, id: { notIn: seen }, diagnosticForm: null },
+    include: { passage: { select: { id: true, title: true, body: true, figures: true } } },
   });
   pool.sort(
     (a, b) => Math.abs(a.difficulty - targetDifficulty) - Math.abs(b.difficulty - targetDifficulty)

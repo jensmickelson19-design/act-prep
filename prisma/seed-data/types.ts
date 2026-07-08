@@ -1,4 +1,7 @@
 import type { Subject } from "@prisma/client";
+import type { FigureSpec } from "../../src/lib/figures";
+
+export type { FigureSpec };
 
 // Canonical ACT taxonomy. The single source of truth (with descriptions of what
 // each tag covers) is docs/act-taxonomy.md — keep these unions in sync with it.
@@ -119,6 +122,9 @@ export type SeedQuestion = {
   choices: SeedChoice[];
   correctAnswer: "A" | "B" | "C" | "D";
   explanation: string;
+  // Question-level figures (e.g. a Math table/graph) rendered between the
+  // prompt and the choices. See src/lib/figures.ts.
+  figures?: FigureSpec[];
   // Math only: true if the question exercises the ACT Modeling category, which
   // overlaps the six Math reporting categories.
   modeling?: boolean;
@@ -132,6 +138,8 @@ export type SeedPassage = {
   subject: Subject;
   title: string;
   body: string;
+  // Passage-level figures placed inline via {{figure:id}} markers in `body`.
+  figures?: FigureSpec[];
   questions: SeedQuestion[];
   // Reading genre / Science passage format.
   passageType?: PassageType;

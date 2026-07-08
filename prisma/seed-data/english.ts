@@ -1,9 +1,10 @@
 import type { SeedQuestion } from "./types";
 
 // ===========================================================================
-// English — Diagnostic Test 1 (englishQuestions)
+// English — drill bank (englishQuestions)
 // ---------------------------------------------------------------------------
-// 50 items, diagnosticForm 1, formOrder 1-50, across 5 original passages.
+// 50 items across 5 original passages. Formerly Diagnostic Test 1; untagged
+// when the fixed practice-test forms moved to prisma/seed-data/form1-*.ts.
 // Every question is 100% original content (no imitation of real ACT items).
 // Each question is tagged with subject ENGLISH, an exact-string reportingCategory
 // and subSkill from docs/act-taxonomy.md, difficulty 1-5, and estimatedTimeSec.
@@ -66,8 +67,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The passage is a calm, reflective narrative, so the plain verb 'offered' matches its tone. 'Flung' and 'lobbed' add an aggressive, physical connotation that does not fit, and 'dangled in front of me' wrongly implies the uncle was teasing or manipulating the narrator.",
-    diagnosticForm: 1,
-    formOrder: 1,
   },
   {
     subject: "ENGLISH",
@@ -86,8 +85,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "'Instead' is an introductory transitional word and is set off from the main clause by a comma. Placing the comma after 'Reza' (C) wrongly separates the subject from its verb, and a semicolon (D) cannot follow a single introductory word.",
-    diagnosticForm: 1,
-    formOrder: 2,
   },
   {
     subject: "ENGLISH",
@@ -109,8 +106,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "An effective lead-in to the rest of the essay should point forward to the transformation the narrator describes. Choice B previews that change. A and D add trivial detail, and C shifts focus to the uncle rather than the narrator's coming experience.",
-    diagnosticForm: 1,
-    formOrder: 3,
   },
   {
     subject: "ENGLISH",
@@ -129,8 +124,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The essay narrates a past summer in the simple past ('handed,' 'learned,' 'said'), so 'frustrated' keeps the tense consistent. The present 'frustrates,' future 'will frustrate,' and present-perfect 'has frustrated' all create an unwarranted shift.",
-    diagnosticForm: 1,
-    formOrder: 4,
   },
   {
     subject: "ENGLISH",
@@ -149,8 +142,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The question asks which option is incorrect. Choice B jams two independent clauses together with no punctuation or conjunction, producing a fused sentence. A (comma + 'and'), C (semicolon), and D (comma + 'so') all join the clauses correctly.",
-    diagnosticForm: 1,
-    formOrder: 5,
   },
   {
     subject: "ENGLISH",
@@ -169,8 +160,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'Would lean' correctly conveys a repeated, habitual past action, which fits a summer of recurring lessons. Present 'leans' and future 'will lean' clash with the past-tense narration, and present-perfect 'has leaned' wrongly connects the action to the present.",
-    diagnosticForm: 1,
-    formOrder: 6,
   },
   {
     subject: "ENGLISH",
@@ -189,8 +178,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "When a quoted sentence is interrupted by an attribution, commas set off the attribution and the comma sits inside the closing quotation mark. B drops the commas, C wrongly uses a period that splits one sentence into two, and D places the first comma outside the quotation mark.",
-    diagnosticForm: 1,
-    formOrder: 7,
   },
   {
     subject: "ENGLISH",
@@ -209,8 +196,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The sentence ranks the second achievement above the first, so 'More important' is the right logical transition. 'For example' would wrongly make the clause an illustration, 'In contrast' implies opposition, and 'Meanwhile' implies mere simultaneity.",
-    diagnosticForm: 1,
-    formOrder: 8,
   },
   {
     subject: "ENGLISH",
@@ -229,8 +214,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "'Watching the clock' already means checking the time constantly, so any added clause restating it is redundant. Choice C deletes the repetition entirely. A, B, and D all repeat the idea in different words.",
-    diagnosticForm: 1,
-    formOrder: 9,
   },
   {
     subject: "ENGLISH",
@@ -249,8 +232,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The clause 'which had once seemed...wasted' is a non-restrictive interrupter and needs a comma on each side; the opening comma is already in the passage, so the closing comma must stay. B drops the closing comma, C wrongly uses a semicolon mid-sentence, and D inserts an unneeded comma after 'place.'",
-    diagnosticForm: 1,
-    formOrder: 10,
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -292,8 +273,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The antecedent is 'Dana Okafor,' a single woman, so the singular feminine pronoun 'she' agrees in number and person. 'They' creates a number mismatch, 'one' shifts to an impersonal pronoun, and 'it' cannot refer to a person.",
-    diagnosticForm: 1,
-    formOrder: 11,
   },
   {
     subject: "ENGLISH",
@@ -315,8 +294,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The sentence pivots from Okafor's early assumption to the incident that overturned it, and it cues the manager example in the next sentence. It contains no statistic (B), no definition (C), and no biographical background (D).",
-    diagnosticForm: 1,
-    formOrder: 12,
   },
   {
     subject: "ENGLISH",
@@ -344,8 +321,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The question asks which version is a fragment. Choice B has a subject ('A manager') buried under a relative clause but no main verb, so it never completes a thought. A, C, and D each contain a full independent clause.",
-    diagnosticForm: 1,
-    formOrder: 13,
   },
   {
     subject: "ENGLISH",
@@ -364,8 +339,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The compound subject 'men and women' is joined by 'and,' making it plural, so the plural verb 'have' agrees. 'Has' is singular, while 'having' and 'to have' are non-finite forms that leave the sentence without a main verb.",
-    diagnosticForm: 1,
-    formOrder: 14,
   },
   {
     subject: "ENGLISH",
@@ -396,8 +369,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Choice A states the point in a single clear clause with natural word order. B is wordy and clumsy ('the reason...is because'), C is choppy and adds a stray subject 'it,' and D twists the word order so the sentence is hard to follow.",
-    diagnosticForm: 1,
-    formOrder: 15,
   },
   {
     subject: "ENGLISH",
@@ -416,8 +387,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The correlative pair 'not only...but also' must join grammatically matching elements. After 'are,' the first element is the adjective 'careless,' so the second must also be an adjective phrase; 'costly to the company' matches. A and D pair an adjective with a verb phrase, and B awkwardly repeats 'are' yet still mismatches an adjective with a progressive verb.",
-    diagnosticForm: 1,
-    formOrder: 16,
   },
   {
     subject: "ENGLISH",
@@ -436,8 +405,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The paragraph goes on to describe what Okafor teaches her students, so an opening sentence that introduces her workshop sets it up directly. B, C, and D are loosely related background facts that do not connect Okafor's lesson to her action.",
-    diagnosticForm: 1,
-    formOrder: 17,
   },
   {
     subject: "ENGLISH",
@@ -465,8 +432,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The previous sentence advises pairing color with shape or pattern, and this sentence illustrates that advice with a bar-chart example, so it is relevant and should stay. It does not explain anything about who is color-blind (B) or contradict the advice (C); a detail need not appear elsewhere to be relevant (D).",
-    diagnosticForm: 1,
-    formOrder: 18,
   },
   {
     subject: "ENGLISH",
@@ -485,8 +450,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "C",
     explanation:
       "The point is that the habits cost almost nothing 'yet' deliver a large benefit, so the contrastive conjunction 'yet' captures the relationship. Leaving two separate sentences (A) loses the contrast, 'and' merely adds, and 'so' wrongly implies the benefit results from the low cost.",
-    diagnosticForm: 1,
-    formOrder: 19,
   },
   {
     subject: "ENGLISH",
@@ -505,8 +468,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The stated purpose is to stress that the benefit reaches the entire audience, and 'usable for everyone' makes exactly that point. B emphasizes ease of learning, C returns to the essay's origin story, and D highlights the workshop, none of which serves the requested purpose.",
-    diagnosticForm: 1,
-    formOrder: 20,
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -548,8 +509,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'For most scientists' is a parenthetical interrupter and must be set off by a comma on each side; the opening comma is already present, so the closing comma is required. B drops the closing comma, C wrongly uses a semicolon, and D inserts a comma that splits 'most' from 'scientists.'",
-    diagnosticForm: 1,
-    formOrder: 21,
   },
   {
     subject: "ENGLISH",
@@ -568,8 +527,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'Suspected' captures a reasoned hunch held before evidence is in, which fits a scientist who has not yet plotted her data. 'Proved' overstates her certainty at this stage, 'guessed' implies a random hunch with no reasoning, and 'demanded' does not fit a belief about facts.",
-    diagnosticForm: 1,
-    formOrder: 22,
   },
   {
     subject: "ENGLISH",
@@ -588,8 +545,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The relative clause modifies 'ships,' which are things, so the relative pronoun 'that' is correct. 'Who' is reserved for people, 'what' cannot introduce a relative clause modifying a stated noun, and 'they' is a personal pronoun that would create a comma splice or run-on.",
-    diagnosticForm: 1,
-    formOrder: 23,
   },
   {
     subject: "ENGLISH",
@@ -608,8 +563,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Because Tharp could not go to sea, she did something else 'instead,' so the substitution transition is correct. 'Likewise' implies similarity, 'For example' implies illustration, and D expresses cause clumsily and wordily.",
-    diagnosticForm: 1,
-    formOrder: 24,
   },
   {
     subject: "ENGLISH",
@@ -628,8 +581,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The paragraph describes how a pattern emerged from Tharp's labor, so an opening that shows her plotting readings by hand introduces that method. B is unrelated weather, C is a general fact about the ocean, and D is biographical background that does not describe the method.",
-    diagnosticForm: 1,
-    formOrder: 25,
   },
   {
     subject: "ENGLISH",
@@ -648,8 +599,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The past participle phrase 'split by a deep valley' attaches directly to 'mountain range' as a modifier with no conjunction needed. The original 'and split' wrongly suggests a second verb with no matching subject, C is ungrammatical, and D ('splits') is a present-tense verb that breaks the sentence's structure and tense.",
-    diagnosticForm: 1,
-    formOrder: 26,
   },
   {
     subject: "ENGLISH",
@@ -668,8 +617,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'This rift' names the valley explicitly, so the reader knows exactly what Tharp pointed out. The bare pronoun 'it' and the bare demonstrative 'this' (B and C) leave the reference vague, and 'the same' (D) is a stilted substitute that still names nothing.",
-    diagnosticForm: 1,
-    formOrder: 27,
   },
   {
     subject: "ENGLISH",
@@ -688,8 +635,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The valley's importance directly contradicts the colleague's dismissal, so the contrast word 'However' is correct. 'Therefore' signals a result, 'In the same way' signals similarity, and 'Afterward' marks only time and misses the reversal of expectation.",
-    diagnosticForm: 1,
-    formOrder: 28,
   },
   {
     subject: "ENGLISH",
@@ -708,8 +653,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The comma before 'a fact' correctly attaches an appositive phrase that renames the preceding clause; no punctuation belongs inside that phrase. B wrongly cuts the restrictive clause off from 'a fact,' C uses a semicolon before a sentence fragment, and D splits the verb phrase 'helped confirm.'",
-    diagnosticForm: 1,
-    formOrder: 29,
   },
   {
     subject: "ENGLISH",
@@ -731,8 +674,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The sentence describes the labor of mapmaking, which belongs with Paragraph 2's account of how Tharp built the maps by hand. In Paragraph 3 it interrupts the discussion of the discovery's significance. It does not belong in the introduction (C), and the two-decade detail is new information, not a repeat (D).",
-    diagnosticForm: 1,
-    formOrder: 30,
   },
   {
     subject: "ENGLISH",
@@ -754,8 +695,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "A closing that links Tharp's patient work to its enduring use fulfills the stated purpose, and choice A connects 'patiently assembled' maps to their worldwide study today. B shifts focus to the theory rather than Tharp, C describes ship conditions, and D returns to unrelated childhood biography.",
-    diagnosticForm: 1,
-    formOrder: 31,
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -796,8 +735,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Three verbs already convey the river's winding motion vividly; piling on near-synonyms adds words without adding meaning. A is the tightest. B adds a fourth synonym, and C and D tack on still more redundant verbs.",
-    diagnosticForm: 1,
-    formOrder: 32,
   },
   {
     subject: "ENGLISH",
@@ -819,8 +756,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The sentence promises a cause ('an imbalance of speed') that Paragraph 2 then unpacks, so it works as a forward-pointing setup. It does not summarize oxbow lakes (B), give a personal opinion (C), or define 'meander,' which the previous sentence already named (D).",
-    diagnosticForm: 1,
-    formOrder: 33,
   },
   {
     subject: "ENGLISH",
@@ -839,8 +774,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "A general scientific truth is stated in the present tense, and the surrounding verbs ('scours,' 'drops,' 'grows') are all present, so 'travels' keeps the tense consistent. The past, past-perfect, and future-perfect options all create an unwarranted shift.",
-    diagnosticForm: 1,
-    formOrder: 34,
   },
   {
     subject: "ENGLISH",
@@ -859,8 +792,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Both phrases describing what the current does should share the same -ing form: 'carrying...and...cutting.' B switches to an independent clause, C mixes an infinitive with a participle, and D mixes a finite verb with a participle.",
-    diagnosticForm: 1,
-    formOrder: 35,
   },
   {
     subject: "ENGLISH",
@@ -879,8 +810,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "'Deposits' is the precise term for sediment settling out of slowing water and is standard in geology, matching the informational tone. 'Drops' is loose and casual, while 'abandons' and 'discards' wrongly suggest a deliberate, almost human choice.",
-    diagnosticForm: 1,
-    formOrder: 36,
   },
   {
     subject: "ENGLISH",
@@ -899,8 +828,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'Over many years' marks the long span of time across which scouring and depositing slowly enlarge each bend, which is exactly the relationship the sentence needs. The other choices signal contrast or illustration, neither of which fits.",
-    diagnosticForm: 1,
-    formOrder: 37,
   },
   {
     subject: "ENGLISH",
@@ -919,8 +846,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'Eventually' shows the next stage in a continuing process — the bends keep growing until the river finally cuts across the neck. 'Nevertheless' and 'In contrast' falsely signal opposition, and 'Similarly' wrongly implies a parallel rather than a next step.",
-    diagnosticForm: 1,
-    formOrder: 38,
   },
   {
     subject: "ENGLISH",
@@ -939,8 +864,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The phrase 'cut off from the current' is a non-restrictive modifier interrupting the subject and verb, so it needs a comma on each side. B drops the closing comma, C inserts a comma that splits 'cut off' from 'from the current,' and D wrongly uses a semicolon mid-sentence.",
-    diagnosticForm: 1,
-    formOrder: 39,
   },
   {
     subject: "ENGLISH",
@@ -971,8 +894,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The passage is a focused, impersonal explanation of meander formation, and a casual vacation anecdote breaks that focus and tone, so it should not be added. B states a false claim, and C and D treat an irrelevant personal detail as if it supported the explanation.",
-    diagnosticForm: 1,
-    formOrder: 40,
   },
   {
     subject: "ENGLISH",
@@ -997,8 +918,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "'Always' already conveys continuous action, so adding 'over time' or 'over a long period of time' is redundant. B trims the redundancy and tightens the relative clause into a participial phrase. A, C, and D all keep wordy time phrases.",
-    diagnosticForm: 1,
-    formOrder: 41,
   },
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -1038,8 +957,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The essay recounts a completed past visit, and surrounding verbs ('visited,' 'seemed,' 'noticed,' 'asked') are past tense, so 'walked' keeps the narration consistent. The present, present-progressive, and future options all break the established tense.",
-    diagnosticForm: 1,
-    formOrder: 42,
   },
   {
     subject: "ENGLISH",
@@ -1061,8 +978,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Calling the paintings 'nothing more than wallpaper' shows the narrator dismissing them as mere decoration, which sets up the change of mind the essay describes. The phrase is figurative, not a literal wall (B); it belittles rather than praises (C); and it is not a painting technique (D).",
-    diagnosticForm: 1,
-    formOrder: 43,
   },
   {
     subject: "ENGLISH",
@@ -1081,8 +996,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "B",
     explanation:
       "The question asks which option is a fragment. Choice B is a dependent clause introduced by 'Although' with no main clause attached, so it cannot stand alone. A is a complete short sentence, and C and D each contain an independent clause.",
-    diagnosticForm: 1,
-    formOrder: 44,
   },
   {
     subject: "ENGLISH",
@@ -1101,8 +1014,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "A colon correctly introduces a list or explanation that follows a complete independent clause ('I began to notice things'). A comma (B) creates a splice into the items, a semicolon (C) wrongly implies a second independent clause, and D leaves the items unpunctuated.",
-    diagnosticForm: 1,
-    formOrder: 45,
   },
   {
     subject: "ENGLISH",
@@ -1130,8 +1041,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The 'the more..., the more...' correlative construction in A is a complete, standard comparative sentence with the finite verbs 'looked' and 'seemed.' B has no main verb, C replaces the finite 'seemed' with the participle 'seeming' so the sentence never completes, and D is a garbled run-on with a dangling 'it did.'",
-    diagnosticForm: 1,
-    formOrder: 46,
   },
   {
     subject: "ENGLISH",
@@ -1150,8 +1059,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "'Compose' deliberately echoes the language of music and so reinforces the painting-as-music comparison, matching the essay's tone. 'Slap together' is dismissive and casual, 'manufacture' suggests mechanical mass production, and 'decorate' reduces the work to ornament.",
-    diagnosticForm: 1,
-    formOrder: 47,
   },
   {
     subject: "ENGLISH",
@@ -1182,8 +1089,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Choice A states the parallel between a color and a note in one clean, balanced clause that fits the essay's quiet, reflective voice. B is convoluted, C is wordy and awkward ('respectively'), and D scrambles the word order and shifts to a clumsy progressive verb.",
-    diagnosticForm: 1,
-    formOrder: 48,
   },
   {
     subject: "ENGLISH",
@@ -1202,8 +1107,6 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "Sentences 1 and 2 build the painting-as-music idea, and sentence 3 then reflects on that idea by admitting the narrator had missed it before, making it a natural closing reflection. Moving it earlier (B, C) would break the explanation; it restates an earlier idea but not word for word, so it should not be deleted (D).",
-    diagnosticForm: 1,
-    formOrder: 49,
   },
   {
     subject: "ENGLISH",
@@ -1225,7 +1128,5 @@ export const englishQuestions: SeedQuestion[] = [
     correctAnswer: "A",
     explanation:
       "The essay's controlling metaphor is 'hearing' a painting, and a conclusion saying the narrator can now 'begin to listen' both echoes that metaphor and signals the change. B is a logistical fact, C is unrelated art history, and D ends on a flat detail that ignores the metaphor and the transformation.",
-    diagnosticForm: 1,
-    formOrder: 50,
   },
 ];

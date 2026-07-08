@@ -1,9 +1,9 @@
 import type { SeedPassage } from "./types";
 
 // ===========================================================================
-// Science seed content — Diagnostic forms.
-// BATCH 1: Diagnostic Test 1 (diagnosticForm: 1) — 7 passages, 40 questions.
-// BATCH 2: Diagnostic Test 2 (diagnosticForm: 2) — 7 passages, 40 questions.
+// Science seed content — drill-bank passages (formerly Diagnostic Tests 1 and
+// 2 — untagged when the fixed practice-test forms moved to form1-*.ts).
+// BATCH 1: 7 passages, 40 questions.  BATCH 2: 7 passages, 40 questions.
 // Passage order each form: data_representation, research_summary,
 // data_representation, research_summary, data_representation, research_summary,
 // conflicting_viewpoints.
@@ -20,7 +20,6 @@ export const sciencePassages: SeedPassage[] = [
     subject: "SCIENCE",
     title: "Tidal Pool Salinity and Temperature",
     passageType: "data_representation",
-    diagnosticForm: 1,
     body: `Along a rocky coastline, water collects in shallow basins called tidal pools when the ocean retreats at low tide. A field team measured conditions in six tidal pools at one site on a single summer day, beginning two hours after the tide began to fall. Salinity is reported in parts per thousand (ppt); open ocean water at this site is 35 ppt. Each pool's elevation is given as its height in centimeters above the lowest pool.
 
 Table 1: Conditions measured 2 hours after the tide began falling.
@@ -53,8 +52,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
         correctAnswer: "D",
         explanation:
           "Table 1 lists volumes of 240, 165, 130, 88, 54, and 21 L for Pools 1-6. Pool 6's 21 L is the smallest value in the column.",
-        diagnosticForm: 1,
-        formOrder: 1,
       },
       {
         subject: "SCIENCE",
@@ -73,8 +70,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
         correctAnswer: "C",
         explanation:
           "Figure 1 states Pool 6's line rises to 33.5 °C at hour 6. 21.0 °C is Pool 1's hour-6 value, 27.2 °C is Pool 6's hour-2 value, and 39.8 °C is a salinity figure, not a temperature.",
-        diagnosticForm: 1,
-        formOrder: 2,
       },
       {
         subject: "SCIENCE",
@@ -93,8 +88,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
         correctAnswer: "A",
         explanation:
           "As elevation rises from 0 to 95 cm, salinity climbs steadily from 35.1 to 42.6 ppt and temperature climbs steadily from 19.4 to 27.2 °C. Both variables increase together.",
-        diagnosticForm: 1,
-        formOrder: 3,
       },
       {
         subject: "SCIENCE",
@@ -113,8 +106,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
         correctAnswer: "B",
         explanation:
           "An elevation of 40 cm falls between Pool 3 (31 cm, 36.4 ppt) and Pool 4 (52 cm, 37.9 ppt). Since salinity rises with elevation, the new pool's salinity should fall between those two values.",
-        diagnosticForm: 1,
-        formOrder: 4,
       },
       {
         subject: "SCIENCE",
@@ -133,8 +124,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
         correctAnswer: "B",
         explanation:
           "In Table 1 the largest volume (240 L, Pool 1) has the lowest salinity (35.1 ppt) and the smallest volume (21 L, Pool 6) has the highest salinity (42.6 ppt). With volume on the horizontal axis, salinity rises as volume falls, so points climb toward the upper left.",
-        diagnosticForm: 1,
-        formOrder: 5,
       },
     ],
   },
@@ -146,7 +135,6 @@ Figure 1 (described): A line graph plots water temperature (°C, vertical axis) 
     subject: "SCIENCE",
     title: "Seed Germination and Soil pH",
     passageType: "research_summary",
-    diagnosticForm: 1,
     body: `Students investigated how soil acidity affects the germination of radish seeds. Soil pH is a measure of acidity: values below 7 are acidic, 7 is neutral, and values above 7 are basic.
 
 Experiment 1
@@ -202,8 +190,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "C",
         explanation:
           "Table 1 shows averages of 9, 24, 36, 31, and 14 seeds. The maximum, 36, occurs at pH 6.5.",
-        diagnosticForm: 1,
-        formOrder: 6,
       },
       {
         subject: "SCIENCE",
@@ -222,8 +208,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "B",
         explanation:
           "Experiment 1 held watering (50 mL), temperature (22 °C), light, and seed count (40) constant. Only soil pH was deliberately changed across the five tray groups, so it is the independent variable.",
-        diagnosticForm: 1,
-        formOrder: 7,
       },
       {
         subject: "SCIENCE",
@@ -242,8 +226,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "B",
         explanation:
           "Experiment 1 identified pH 6.5 as the most favorable pH (36 germinated). Holding pH at this best value in Experiments 2 and 3 keeps soil acidity from limiting germination, so any change in results can be attributed to the new variable being tested.",
-        diagnosticForm: 1,
-        formOrder: 8,
       },
       {
         subject: "SCIENCE",
@@ -262,8 +244,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "C",
         explanation:
           "In Experiment 2 germination goes 12, 29, 36, 33, 19 — up to a peak at 50 mL, then down. In Experiment 3 it goes 8, 22, 36, 30, 11 — up to a peak at 22 °C, then down. Both show a rise-then-fall pattern.",
-        diagnosticForm: 1,
-        formOrder: 9,
       },
       {
         subject: "SCIENCE",
@@ -282,8 +262,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "A",
         explanation:
           "Experiment 2 varied the daily watering amount (10-90 mL) while holding temperature at 22 °C. Experiment 3 varied temperature (10-34 °C) while holding watering at 50 mL. The deliberately changed variable is the key difference.",
-        diagnosticForm: 1,
-        formOrder: 10,
       },
       {
         subject: "SCIENCE",
@@ -302,8 +280,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
         correctAnswer: "C",
         explanation:
           "Peak germination occurred at pH 6.5 — only slightly acidic, not the most acidic pH 4.5, which gave just 9 — and at 22 °C, well above the coolest 10 °C, which gave just 8. The data show a moderate optimum, not a cool-and-acidic one, so the hypothesis is not supported.",
-        diagnosticForm: 1,
-        formOrder: 11,
       },
     ],
   },
@@ -315,7 +291,6 @@ Temperature (°C) | Avg. seeds germinated (of 40)
     subject: "SCIENCE",
     title: "Cooling of Heated Metal Blocks",
     passageType: "data_representation",
-    diagnosticForm: 1,
     body: `An engineering class studied how blocks of three metals lose heat. Each block had the same mass (500 g) and the same shape. Each block was heated to 150 °C and then placed on an insulating stand in a room held at 20 °C. The temperature of each block was recorded every 5 minutes.
 
 Table 1: Block temperature (°C) over time.
@@ -351,8 +326,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "C",
         explanation:
           "Reading the Iron column at the 15-minute row in Table 1 gives 89 °C. 54 °C is copper and 61 °C is aluminum at that time; 103 °C is iron at 10 minutes.",
-        diagnosticForm: 1,
-        formOrder: 12,
       },
       {
         subject: "SCIENCE",
@@ -371,8 +344,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "A",
         explanation:
           "Figure 1 gives 0.90 J/g·°C for aluminum, 0.45 for iron, and 0.39 for copper. Aluminum's value is the largest, so it has the tallest bar and the highest specific heat capacity.",
-        diagnosticForm: 1,
-        formOrder: 13,
       },
       {
         subject: "SCIENCE",
@@ -391,8 +362,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "B",
         explanation:
           "At 5, 10, 15, 20, 25, and 30 minutes the iron column always holds the highest temperature (122, 103, 89, 78, 70, 64). Iron stays warmest throughout the cooling period.",
-        diagnosticForm: 1,
-        formOrder: 14,
       },
       {
         subject: "SCIENCE",
@@ -411,8 +380,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "C",
         explanation:
           "For copper the drops are 54, 26, 16, 10, 6, 4 °C across successive intervals; aluminum and iron show the same shrinking pattern. As each block approaches room temperature, it cools by less in each interval.",
-        diagnosticForm: 1,
-        formOrder: 15,
       },
       {
         subject: "SCIENCE",
@@ -431,8 +398,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "C",
         explanation:
           "Copper reads 44 °C at 20 minutes and 38 °C at 25 minutes. It crosses the 40 °C mark somewhere in that interval, so the first reading below 40 °C falls between 20 and 25 minutes.",
-        diagnosticForm: 1,
-        formOrder: 16,
       },
       {
         subject: "SCIENCE",
@@ -451,8 +416,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
         correctAnswer: "B",
         explanation:
           "Iron is at 64 °C at 30 minutes and is still cooling, but it cannot fall below the 20 °C room temperature. At 35 minutes its temperature must lie between 20 °C and 64 °C — somewhat below 64 but above room temperature.",
-        diagnosticForm: 1,
-        formOrder: 17,
       },
     ],
   },
@@ -464,7 +427,6 @@ Note: A metal with a higher specific heat capacity stores more heat energy per g
     subject: "SCIENCE",
     title: "Insulation and Heat Loss from Water Containers",
     passageType: "research_summary",
-    diagnosticForm: 1,
     body: `A researcher tested how different wrappings affect heat loss from containers of hot water.
 
 Experiment 1
@@ -520,8 +482,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "D",
         explanation:
           "Table 1 shows the bare can at 41 °C, lower than cotton (52), cardboard (57), wool felt (63), and foam plastic (68). The unwrapped can lost the most heat.",
-        diagnosticForm: 1,
-        formOrder: 18,
       },
       {
         subject: "SCIENCE",
@@ -540,8 +500,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "A",
         explanation:
           "Holding the starting temperature (80 °C) and room temperature (21 °C) constant means any difference in the final temperatures must be due to the wrapping material — the one variable the researcher deliberately changed.",
-        diagnosticForm: 1,
-        formOrder: 19,
       },
       {
         subject: "SCIENCE",
@@ -560,8 +518,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "B",
         explanation:
           "Final temperatures are 61, 68, 73, 75, 76 °C. The gains for each step up in thickness are +7, +5, +2, +1 — still rising, but by progressively smaller amounts.",
-        diagnosticForm: 1,
-        formOrder: 20,
       },
       {
         subject: "SCIENCE",
@@ -580,8 +536,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "C",
         explanation:
           "Experiment 2 varied foam thickness; Experiment 3 varied water volume. Both, however, always started the water at 80 °C in a 21 °C room. The 80 °C starting temperature was held constant in each experiment.",
-        diagnosticForm: 1,
-        formOrder: 21,
       },
       {
         subject: "SCIENCE",
@@ -600,8 +554,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "C",
         explanation:
           "Experiment 3 used 1.0 cm foam and shows 200 mL ending at 63 °C and 300 mL ending at 68 °C. A volume of 250 mL lies between these, so its 30-minute temperature should fall between 63 °C and 68 °C, matching the prediction.",
-        diagnosticForm: 1,
-        formOrder: 22,
       },
       {
         subject: "SCIENCE",
@@ -620,8 +572,6 @@ Water volume (mL) | Water temp after 30 min (°C)
         correctAnswer: "B",
         explanation:
           "Experiment 1 keeps thickness fixed at 1 cm so that only the material differs between cans. A 2.0 cm foam can would differ in thickness as well as material, so a difference in its result could not be attributed to material alone.",
-        diagnosticForm: 1,
-        formOrder: 23,
       },
     ],
   },
@@ -633,7 +583,6 @@ Water volume (mL) | Water temp after 30 min (°C)
     subject: "SCIENCE",
     title: "Populations in a Freshwater Pond",
     passageType: "data_representation",
-    diagnosticForm: 1,
     body: `Ecologists monitored a freshwater pond for one year, sampling on the first day of each season. They estimated the population of three organisms: a microscopic alga, a small crustacean called a water flea that eats the alga, and a fish that eats water fleas.
 
 Table 1: Estimated populations per liter of pond water.
@@ -666,8 +615,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
         correctAnswer: "C",
         explanation:
           "The water flea column lists 6, 41, 95, and 52 per liter. The largest value, 95, is recorded in summer.",
-        diagnosticForm: 1,
-        formOrder: 24,
       },
       {
         subject: "SCIENCE",
@@ -686,8 +633,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
         correctAnswer: "C",
         explanation:
           "Figure 2 gives dissolved oxygen values of 12.6, 10.4, 7.1, and 9.8 mg/L. The smallest, 7.1 mg/L, occurs in summer.",
-        diagnosticForm: 1,
-        formOrder: 25,
       },
       {
         subject: "SCIENCE",
@@ -706,8 +651,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
         correctAnswer: "B",
         explanation:
           "Fish were most abundant in summer (33 per 1000 L). Figure 2 shows summer also had the lowest dissolved oxygen (7.1 mg/L). The other options describe winter or other seasons.",
-        diagnosticForm: 1,
-        formOrder: 26,
       },
       {
         subject: "SCIENCE",
@@ -726,8 +669,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
         correctAnswer: "C",
         explanation:
           "From spring to summer the algae population fell from 38,500 to 21,000 cells/L, while the water flea population rose from 41 to 95 per liter. The two populations moved in opposite directions.",
-        diagnosticForm: 1,
-        formOrder: 27,
       },
       {
         subject: "SCIENCE",
@@ -746,8 +687,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
         correctAnswer: "A",
         explanation:
           "Figure 1 shows temperature peaking in summer (26 °C); Figure 2 shows dissolved oxygen bottoming out in summer (7.1 mg/L). Combining them, the warmest water held the least dissolved oxygen — the two trend in opposite directions.",
-        diagnosticForm: 1,
-        formOrder: 28,
       },
     ],
   },
@@ -759,7 +698,6 @@ Figure 2 (described): A graph plots the amount of dissolved oxygen in the pond w
     subject: "SCIENCE",
     title: "Friction on an Inclined Ramp",
     passageType: "research_summary",
-    diagnosticForm: 1,
     body: `Physics students studied the motion of a wooden block sliding down a ramp. They used a model in which the block slides only if the ramp is tilted past a "release angle" — the smallest angle, measured from horizontal, at which the block begins to move on its own. A surface that grips the block more strongly is said to have more friction and requires a larger release angle.
 
 Experiment 1
@@ -813,8 +751,6 @@ Sand on ramp (g) | Release angle (degrees)
         correctAnswer: "D",
         explanation:
           "Table 1 lists release angles of 11°, 19°, 28°, and 37°. The largest, 37°, belongs to the rubber mat.",
-        diagnosticForm: 1,
-        formOrder: 29,
       },
       {
         subject: "SCIENCE",
@@ -833,8 +769,6 @@ Sand on ramp (g) | Release angle (degrees)
         correctAnswer: "B",
         explanation:
           "Repeating a measurement and averaging reduces the impact of small random errors in any single trial, giving a more reliable release angle for each surface.",
-        diagnosticForm: 1,
-        formOrder: 30,
       },
       {
         subject: "SCIENCE",
@@ -853,8 +787,6 @@ Sand on ramp (g) | Release angle (degrees)
         correctAnswer: "B",
         explanation:
           "Table 2 shows release angles of 19°, 19°, 20°, and 19° as mass rose from 200 g to 800 g — essentially no change. The data do not support the hypothesis that adding mass raises the release angle.",
-        diagnosticForm: 1,
-        formOrder: 31,
       },
       {
         subject: "SCIENCE",
@@ -873,8 +805,6 @@ Sand on ramp (g) | Release angle (degrees)
         correctAnswer: "A",
         explanation:
           "Experiment 2 changed block mass (200-800 g) and the release angle barely moved. Experiment 3 changed the amount of sand on the ramp (0-8 g) and the release angle rose from 19° to 31°. Sand affected the result; added mass did not.",
-        diagnosticForm: 1,
-        formOrder: 32,
       },
       {
         subject: "SCIENCE",
@@ -893,8 +823,6 @@ Sand on ramp (g) | Release angle (degrees)
         correctAnswer: "B",
         explanation:
           "In Experiment 3, 4 g of sand gave 26° and 6 g gave 30°. A 5 g amount lies between these, so the release angle should fall between 26° and 30°.",
-        diagnosticForm: 1,
-        formOrder: 33,
       },
     ],
   },
@@ -906,7 +834,6 @@ Sand on ramp (g) | Release angle (degrees)
     subject: "SCIENCE",
     title: "Two Explanations for a Lake's Vanishing Trout",
     passageType: "conflicting_viewpoints",
-    diagnosticForm: 1,
     body: `Over the past 20 years, the population of native trout in Coldspring Lake has dropped by about 80%. Two scientists who study the lake explain the decline differently.
 
 Background data both scientists accept:
@@ -938,8 +865,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "B",
         explanation:
           "Scientist 1's Warming Hypothesis states the decline is caused mainly by warming water, with summer temperatures now exceeding the 20 °C stress threshold for trout.",
-        diagnosticForm: 1,
-        formOrder: 34,
       },
       {
         subject: "SCIENCE",
@@ -958,8 +883,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "C",
         explanation:
           "Scientist 2 states that young trout which lose feeding contests with spotfin shiners 'grow too slowly to survive their first winter.' The shiners compete for insects rather than eating the trout.",
-        diagnosticForm: 1,
-        formOrder: 35,
       },
       {
         subject: "SCIENCE",
@@ -978,8 +901,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "B",
         explanation:
           "The shared background states total insect mass has not changed. Scientist 1 cites this as evidence there is enough food for both species, so shiners are not the problem. Scientist 2 accepts the same fact but argues shiners still win the feeding contests in shared shallow areas.",
-        diagnosticForm: 1,
-        formOrder: 36,
       },
       {
         subject: "SCIENCE",
@@ -998,8 +919,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "B",
         explanation:
           "Scientist 2 argues the steepest decline began only after shiners became common about 12 years ago. A steepest drop 10 years ago falls after that point, matching Scientist 2's timing argument more directly than Scientist 1's, since warming had already been underway for a decade by then.",
-        diagnosticForm: 1,
-        formOrder: 37,
       },
       {
         subject: "SCIENCE",
@@ -1018,8 +937,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "A",
         explanation:
           "A trout decline tied to warming in a lake with no shiners shows warming alone can drive the decline. This supports Scientist 1's Warming Hypothesis and undercuts Scientist 2's claim that shiner competition is the main cause.",
-        diagnosticForm: 1,
-        formOrder: 38,
       },
       {
         subject: "SCIENCE",
@@ -1038,8 +955,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "B",
         explanation:
           "Scientist 2 explicitly concludes that 'removing spotfin shiners from the lake, not cooling the water, is the way to bring the trout back.' Managers following this hypothesis would remove the shiners.",
-        diagnosticForm: 1,
-        formOrder: 39,
       },
       {
         subject: "SCIENCE",
@@ -1058,8 +973,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
         correctAnswer: "B",
         explanation:
           "Scientist 1 predicts that cooler water should let the trout recover. If cooling fails while abundant shiners remain, the prediction of the Warming Hypothesis is not met, whereas the persistent shiner population matches Scientist 2's Competition Hypothesis as the better explanation.",
-        diagnosticForm: 1,
-        formOrder: 40,
       },
     ],
   },
@@ -1075,7 +988,6 @@ The trout decline is caused mainly by competition with the spotfin shiner. Altho
     subject: "SCIENCE",
     title: "Glacier Mass Balance at Three Elevations",
     passageType: "data_representation",
-    diagnosticForm: 2,
     body: `A mountain glacier gains mass from snowfall and loses mass from melting. The net change over one year, called the annual mass balance, is reported in meters of water equivalent (m w.e.); a positive value means the glacier gained ice. Researchers placed measuring stakes at three elevations on one glacier and recorded annual mass balance for five consecutive years.
 
 Table 1: Annual mass balance (m w.e.) by stake elevation.
@@ -1107,8 +1019,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
         correctAnswer: "C",
         explanation:
           "Reading the Stake C column at the Year 3 row of Table 1 gives +1.6 m w.e. The value -1.8 is Stake A in Year 3, and +3.7 is a snowfall figure from Figure 1.",
-        diagnosticForm: 2,
-        formOrder: 1,
       },
       {
         subject: "SCIENCE",
@@ -1127,8 +1037,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
         correctAnswer: "C",
         explanation:
           "Figure 1 lists snowfall as 3.4, 2.9, 3.7, 2.5, and 3.2 m w.e. for Years 1-5. The tallest bar, 3.7 m w.e., is Year 3.",
-        diagnosticForm: 2,
-        formOrder: 2,
       },
       {
         subject: "SCIENCE",
@@ -1147,8 +1055,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
         correctAnswer: "B",
         explanation:
           "In every year, Stake A (lowest) is the most negative, Stake B is intermediate, and Stake C (highest) is positive. Mass balance becomes more positive as elevation rises.",
-        diagnosticForm: 2,
-        formOrder: 3,
       },
       {
         subject: "SCIENCE",
@@ -1167,8 +1073,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
         correctAnswer: "B",
         explanation:
           "Figure 1 shows the lowest snowfall (2.5 m w.e.) in Year 4. In Table 1, Stake A's Year 4 balance of -3.0 m w.e. is its most negative value of the five years.",
-        diagnosticForm: 2,
-        formOrder: 4,
       },
       {
         subject: "SCIENCE",
@@ -1187,8 +1091,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
         correctAnswer: "B",
         explanation:
           "2,650 m lies between Stake B (2,400 m, -0.4 m w.e. in Year 1) and Stake C (2,900 m, +1.3 m w.e. in Year 1). Since balance rises with elevation, the new stake's value should fall between -0.4 and +1.3 m w.e.",
-        diagnosticForm: 2,
-        formOrder: 5,
       },
     ],
   },
@@ -1200,7 +1102,6 @@ Figure 1 (described): A bar graph shows total winter snowfall (m w.e., vertical 
     subject: "SCIENCE",
     title: "Yeast Fermentation and Sugar Type",
     passageType: "research_summary",
-    diagnosticForm: 2,
     body: `Yeast cells break down sugars and release carbon dioxide (CO2) gas. Students investigated how sugar type and temperature affect the rate of CO2 production.
 
 Experiment 1: Identical flasks each received 5 g of dry yeast, 200 mL of water at 30 °C, and 20 g of one sugar. The volume of CO2 collected after 15 minutes was recorded.
@@ -1241,8 +1142,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "D",
         explanation:
           "Experiment 1 reports 410, 395, 360, and 25 mL for glucose, fructose, sucrose, and lactose. Lactose's 25 mL is by far the smallest.",
-        diagnosticForm: 2,
-        formOrder: 6,
       },
       {
         subject: "SCIENCE",
@@ -1261,8 +1160,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "C",
         explanation:
           "Experiment 1 held yeast mass (5 g), water (200 mL at 30 °C), and sugar mass (20 g) constant; only the type of sugar changed across flasks.",
-        diagnosticForm: 2,
-        formOrder: 7,
       },
       {
         subject: "SCIENCE",
@@ -1281,8 +1178,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "C",
         explanation:
           "CO2 climbs 90 → 240 → 410 → 480 mL from 10 to 40 °C, then drops sharply to 170 mL at 50 °C. The output peaks near 40 °C.",
-        diagnosticForm: 2,
-        formOrder: 8,
       },
       {
         subject: "SCIENCE",
@@ -1301,8 +1196,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "A",
         explanation:
           "Experiment 3 repeats the 30 °C glucose trial with one change — boiling the yeast first. The near-zero result (5 mL vs. 410 mL) tests, and supports, the idea that boiling destroys the yeast's fermenting ability.",
-        diagnosticForm: 2,
-        formOrder: 9,
       },
       {
         subject: "SCIENCE",
@@ -1321,8 +1214,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "C",
         explanation:
           "Experiment 2 repeats the Experiment 1 procedure, which fixes 5 g of dry yeast per flask. Sugar type varied in Experiment 1, temperature varied in Experiment 2, and CO2 volume was the measured outcome, not a fixed condition.",
-        diagnosticForm: 2,
-        formOrder: 10,
       },
       {
         subject: "SCIENCE",
@@ -1341,8 +1232,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
         correctAnswer: "C",
         explanation:
           "CO2 already fell sharply from 480 mL at 40 °C to 170 mL at 50 °C, indicating heat damage to the yeast above the 40 °C peak. Continuing to 60 °C should drop output even further below 170 mL.",
-        diagnosticForm: 2,
-        formOrder: 11,
       },
     ],
   },
@@ -1354,7 +1243,6 @@ Experiment 3: The Experiment 2 setup at 30 °C was repeated, but before measurin
     subject: "SCIENCE",
     title: "Absorption Spectrum of a Plant Pigment",
     passageType: "data_representation",
-    diagnosticForm: 2,
     body: `When light passes through a solution containing a pigment, some wavelengths are absorbed more strongly than others. Absorbance is a unitless measure; higher absorbance means more light of that wavelength was absorbed. A laboratory measured the absorbance of a leaf-pigment extract across the visible spectrum.
 
 Table 1: Absorbance of the pigment extract by wavelength.
@@ -1388,8 +1276,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "B",
         explanation:
           "The 590 nm row of Table 1 lists an absorbance of 0.47.",
-        diagnosticForm: 2,
-        formOrder: 12,
       },
       {
         subject: "SCIENCE",
@@ -1408,8 +1294,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "B",
         explanation:
           "The smallest absorbance in Table 1 is 0.12, at 550 nm, which the table labels yellow-green.",
-        diagnosticForm: 2,
-        formOrder: 13,
       },
       {
         subject: "SCIENCE",
@@ -1428,8 +1312,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "A",
         explanation:
           "Figure 1's tallest oxygen-production bars are at 430 and 660 nm — the same wavelengths with the highest absorbance in Table 1 (1.42 and 1.28). Strong absorbance goes with rapid oxygen production.",
-        diagnosticForm: 2,
-        formOrder: 14,
       },
       {
         subject: "SCIENCE",
@@ -1448,8 +1330,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "B",
         explanation:
           "Absorbance is high at 430 nm (1.42), falls to a low near 510-550 nm (0.18, 0.12), rises again to 660 nm (1.28), then falls. The curve has two peaks with a dip between them.",
-        diagnosticForm: 2,
-        formOrder: 15,
       },
       {
         subject: "SCIENCE",
@@ -1468,8 +1348,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "B",
         explanation:
           "530 nm lies between 510 nm (0.18) and 550 nm (0.12), the lowest-absorbance region. Since oxygen production tracks absorbance, illumination at 530 nm should yield a very low rate.",
-        diagnosticForm: 2,
-        formOrder: 16,
       },
       {
         subject: "SCIENCE",
@@ -1488,8 +1366,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
         correctAnswer: "C",
         explanation:
           "The claim predicts that low absorbance means low oxygen production. High oxygen output at 510 nm, where absorbance is only 0.18, would break that link and challenge the claim. The other options all show absorbance and production matching, which supports the claim.",
-        diagnosticForm: 2,
-        formOrder: 17,
       },
     ],
   },
@@ -1501,7 +1377,6 @@ Figure 1 (described): A bar graph plots the rate of oxygen production by the pla
     subject: "SCIENCE",
     title: "Evaporation Rate of Saltwater Solutions",
     passageType: "research_summary",
-    diagnosticForm: 2,
     body: `Students investigated how dissolved salt and air movement affect how fast water evaporates from an open dish.
 
 Experiment 1: Five identical shallow dishes each held 100 mL of water with a different amount of dissolved table salt. Each dish sat in still air at 25 °C. After 48 hours the mass of water lost to evaporation was recorded.
@@ -1542,8 +1417,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "C",
         explanation:
           "The Experiment 2 table lists 72 g of water lost at an airflow of 1.0 m/s.",
-        diagnosticForm: 2,
-        formOrder: 18,
       },
       {
         subject: "SCIENCE",
@@ -1562,8 +1435,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "B",
         explanation:
           "As salt rose from 0 to 40 g, water lost fell steadily: 41, 38, 35, 30, 22 g. More dissolved salt reduces evaporation.",
-        diagnosticForm: 2,
-        formOrder: 19,
       },
       {
         subject: "SCIENCE",
@@ -1582,8 +1453,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "B",
         explanation:
           "Experiment 2 varies airflow to study its effect. Holding salt at 0 g for every dish keeps that variable constant, so any change in water lost can be attributed to airflow alone.",
-        diagnosticForm: 2,
-        formOrder: 20,
       },
       {
         subject: "SCIENCE",
@@ -1602,8 +1471,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "B",
         explanation:
           "Experiment 3 repeats the Experiment 2 setup at 1.0 m/s and 25 °C for 48 hours; the only stated change is using water with 40 g of dissolved salt instead of pure water.",
-        diagnosticForm: 2,
-        formOrder: 21,
       },
       {
         subject: "SCIENCE",
@@ -1622,8 +1489,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "A",
         explanation:
           "Pure water at 1.0 m/s lost 72 g; Experiment 3's salty water at the same airflow lost only 53 g — more than the 41 g lost in still pure water but less than 72 g. Airflow raises evaporation while dissolved salt lowers it; the two effects partly offset.",
-        diagnosticForm: 2,
-        formOrder: 22,
       },
       {
         subject: "SCIENCE",
@@ -1642,8 +1507,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
         correctAnswer: "B",
         explanation:
           "Testing which variable matters more requires comparing the full range of each. From 0 to 40 g salt, water lost drops 41 → 22 g (a 19 g change); from 0.0 to 2.0 m/s, it rises 41 → 91 g (a 50 g change). Option B sets up exactly that comparison.",
-        diagnosticForm: 2,
-        formOrder: 23,
       },
     ],
   },
@@ -1655,7 +1518,6 @@ Experiment 3: The Experiment 2 procedure was repeated at an airflow of 1.0 m/s, 
     subject: "SCIENCE",
     title: "Ocean Water Properties with Depth",
     passageType: "data_representation",
-    diagnosticForm: 2,
     body: `A research vessel lowered an instrument package through the open ocean and recorded properties of the water at six depths. Dissolved oxygen is given in milligrams per liter (mg/L).
 
 Table 1: Ocean water properties by depth.
@@ -1688,8 +1550,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
         correctAnswer: "C",
         explanation:
           "The 500 m row of Table 1 lists a pressure of 51.0 atm.",
-        diagnosticForm: 2,
-        formOrder: 24,
       },
       {
         subject: "SCIENCE",
@@ -1708,8 +1568,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
         correctAnswer: "C",
         explanation:
           "From 0 to 2,000 m, temperature falls steadily from 24.6 to 2.9 °C while pressure rises steadily from 1.0 to 201.0 atm. The two trends move in opposite directions.",
-        diagnosticForm: 2,
-        formOrder: 25,
       },
       {
         subject: "SCIENCE",
@@ -1728,8 +1586,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
         correctAnswer: "C",
         explanation:
           "Dissolved O2 values are 6.8, 6.5, 4.1, 2.0, 3.3, and 5.0 mg/L. The minimum, 2.0 mg/L, occurs at 500 m. Oxygen falls to that depth and then rises again.",
-        diagnosticForm: 2,
-        formOrder: 26,
       },
       {
         subject: "SCIENCE",
@@ -1748,8 +1604,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
         correctAnswer: "B",
         explanation:
           "Figure 1 shows density climbing steadily from ~1,024 kg/m^3 at the surface to ~1,038 kg/m^3 at 2,000 m. A depth of 750 m is roughly one-third of the way down, giving an intermediate value near 1,031 kg/m^3.",
-        diagnosticForm: 2,
-        formOrder: 27,
       },
       {
         subject: "SCIENCE",
@@ -1768,8 +1622,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
         correctAnswer: "C",
         explanation:
           "From 500 m to 2,000 m, temperature keeps falling (7.8 → 2.9 °C) but dissolved oxygen rises (2.0 → 5.0 mg/L). Oxygen moving opposite to temperature there shows the two are not simply linked, supporting the scientist's statement.",
-        diagnosticForm: 2,
-        formOrder: 28,
       },
     ],
   },
@@ -1781,7 +1633,6 @@ Figure 1 (described): A scatter plot displays seawater density (kg/m^3, vertical
     subject: "SCIENCE",
     title: "Magnetic Braking of a Falling Magnet",
     passageType: "research_summary",
-    diagnosticForm: 2,
     body: `When a magnet falls through a metal tube, moving magnetic fields create electric currents in the tube that, in turn, slow the magnet. Students investigated this magnetic braking effect.
 
 Experiment 1: A bar magnet was dropped from the top of a 1.0 m vertical tube. The time to fall through the tube was measured for tubes made of different materials, each with the same wall thickness.
@@ -1826,8 +1677,6 @@ Wall thickness (mm) | Fall time (s)
         correctAnswer: "C",
         explanation:
           "Experiment 1 lists fall times of 0.45, 2.10, 3.80, and 0.45 s. The longest, 3.80 s, is the copper tube.",
-        diagnosticForm: 2,
-        formOrder: 29,
       },
       {
         subject: "SCIENCE",
@@ -1846,8 +1695,6 @@ Wall thickness (mm) | Fall time (s)
         correctAnswer: "B",
         explanation:
           "The 'no tube' drop is a control: with no metal present there is no magnetic braking, so its 0.45 s sets the baseline against which braking by each tube material is judged.",
-        diagnosticForm: 2,
-        formOrder: 30,
       },
       {
         subject: "SCIENCE",
@@ -1866,8 +1713,6 @@ Wall thickness (mm) | Fall time (s)
         correctAnswer: "A",
         explanation:
           "As magnet strength rose from 1 to 4, fall time rose from 1.90 to 3.80 to 7.55 s. Stronger magnets fall more slowly through the copper tube.",
-        diagnosticForm: 2,
-        formOrder: 31,
       },
       {
         subject: "SCIENCE",
@@ -1886,8 +1731,6 @@ Wall thickness (mm) | Fall time (s)
         correctAnswer: "B",
         explanation:
           "In Experiment 2 the 3.80 s result came from the strength-2 magnet in a copper tube. In Experiment 3 the 3.80 s result was the 2.0 mm copper tube, which the procedure states used the strength-2 magnet. Both trials share a copper tube and the strength-2 magnet.",
-        diagnosticForm: 2,
-        formOrder: 32,
       },
       {
         subject: "SCIENCE",
@@ -1906,8 +1749,6 @@ Wall thickness (mm) | Fall time (s)
         correctAnswer: "B",
         explanation:
           "Fall time rises with wall thickness: 2.60 s at 1.0 mm, 3.80 s at 2.0 mm, 6.40 s at 4.0 mm. A 3.0 mm wall lies between 2.0 and 4.0 mm, so its fall time should fall between 3.80 and 6.40 s.",
-        diagnosticForm: 2,
-        formOrder: 33,
       },
     ],
   },
@@ -1919,7 +1760,6 @@ Wall thickness (mm) | Fall time (s)
     subject: "SCIENCE",
     title: "Two Explanations for a Coral Reef's Decline",
     passageType: "conflicting_viewpoints",
-    diagnosticForm: 2,
     body: `A shallow coral reef has lost more than half of its living coral cover over fifteen years. Two marine scientists offer competing explanations. Over the same period, average summer seawater temperature at the reef rose from 28.5 °C to 30.1 °C, and a coastal town upstream grew rapidly.
 
 Scientist 1 (Thermal Stress Hypothesis):
@@ -1945,8 +1785,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 1 states that when water grows too warm, corals expel the food-supplying algae and turn white — the bleaching event.",
-        diagnosticForm: 2,
-        formOrder: 34,
       },
       {
         subject: "SCIENCE",
@@ -1965,8 +1803,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 2 attributes the decline to fertilizer and sewage adding nutrients that fuel seaweed blooms, which overgrow the coral and block light.",
-        diagnosticForm: 2,
-        formOrder: 35,
       },
       {
         subject: "SCIENCE",
@@ -1985,8 +1821,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "A",
         explanation:
           "The two scientists disagree about the cause but both accept the starting fact stated in the passage — the reef has lost more than half its living coral cover. They differ only on why.",
-        diagnosticForm: 2,
-        formOrder: 36,
       },
       {
         subject: "SCIENCE",
@@ -2005,8 +1839,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 2 ties the decline to the town's runoff. If damage is concentrated directly downstream of the outflow, that spatial pattern points to local pollution rather than basin-wide warming, strengthening Scientist 2 over Scientist 1.",
-        diagnosticForm: 2,
-        formOrder: 37,
       },
       {
         subject: "SCIENCE",
@@ -2025,8 +1857,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 1 holds that warming alone drives the decline. A reef with the same temperature rise but no runoff should, by that hypothesis, still be declining from thermal stress.",
-        diagnosticForm: 2,
-        formOrder: 38,
       },
       {
         subject: "SCIENCE",
@@ -2045,8 +1875,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 2 claims controlling runoff would let the reef recover even with continued warming. Cutting runoff while temperature stays high isolates the nutrient factor: recovery would support Scientist 2, while continued decline would favor Scientist 1.",
-        diagnosticForm: 2,
-        formOrder: 39,
       },
       {
         subject: "SCIENCE",
@@ -2065,8 +1893,6 @@ The decline is driven mainly by nutrient pollution. Fertilizer and sewage from t
         correctAnswer: "B",
         explanation:
           "Scientist 2 predicts recovery once runoff is controlled. Continued decline after runoff is eliminated, with warming as the remaining factor, contradicts Scientist 2's prediction and matches Scientist 1's Thermal Stress Hypothesis.",
-        diagnosticForm: 2,
-        formOrder: 40,
       },
     ],
   },

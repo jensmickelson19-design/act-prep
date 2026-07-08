@@ -6,7 +6,9 @@ import { sectionsFor } from "@/lib/test-format";
 // If the pool is smaller than N, fill the gap by random reuse.
 async function buildSection(subject: Subject, target: number): Promise<string[]> {
   const all = await prisma.question.findMany({
-    where: { subject },
+    // Random fallback tests sample the drill bank; fixed-form content is
+    // reserved for buildDiagnosticTest.
+    where: { subject, diagnosticForm: null },
     select: { id: true, subSkill: true },
   });
   if (all.length === 0) return [];
@@ -60,10 +62,13 @@ export async function buildTestQuestions(
   return result;
 }
 
-// Build one of the two fixed diagnostic tests. Unlike buildTestQuestions, this
-// returns the exact, repeatable set of questions tagged for that diagnostic form,
-// in their authored order (formOrder) — no shuffling, no random reuse. Every
-// student who takes Diagnostic Test 1 sees the same items.
+// Build a fixed practice-test form. Unlike buildTestQuestions, this returns the
+// exact, repeatable set of questions tagged for that form, in their authored
+// order (formOrder) — no shuffling, no random reuse. Every student who takes
+// Practice Test 1 sees the same items. This is the default path from
+// api/test/start; the random builder above is only a transitional fallback.
+// TODO(form 2): author prisma/seed-data/form2-*.ts with diagnosticForm=2, then
+// offer a form picker on the test start page (auto-suggest the untaken form).
 export async function buildDiagnosticTest(
   form: number,
   withScience: boolean = true

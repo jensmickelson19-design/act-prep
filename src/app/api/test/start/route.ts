@@ -2,10 +2,13 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { buildTestQuestions } from "@/lib/test-builder";
+import { buildDiagnosticTest, buildTestQuestions } from "@/lib/test-builder";
 import { sectionsFor } from "@/lib/test-format";
 
-const schema = z.object({ withScience: z.boolean().default(true) });
+const schema = z.object({
+  withScience: z.boolean().default(true),
+  form: z.number().int().min(1).max(2).default(1),
+});
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -16,9 +19,17 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid body" }, { status: 400 });
   }
-  const { withScience } = parsed.data;
+  const { withScience, form } = parsed.data;
 
-  const questionsBySection = await buildTestQuestions(withScience);
+  // Fixed practice-test form: every student sees the same items in the same
+  // order, like a real ACT form. Falls back to a random bank sample only if
+  // the requested form's content is incomplete (transitional safety net).
+  let questionsBySection;
+  try {
+    questionsBySection = await buildDiagnosticTest(form, withScience);
+  } catch {
+    questionsBySection = await buildTestQuestions(withScience);
+  }
   const sections = sectionsFor(withScience);
   const first = sections[0];
   const deadline = new Date(Date.now() + first.durationSec * 1000);
@@ -27,6 +38,7 @@ export async function POST(req: Request) {
     data: {
       userId: session.user.id,
       status: "IN_PROGRESS",
+      form,
       withScience,
       currentSection: first.subject,
       sectionDeadline: deadline,
