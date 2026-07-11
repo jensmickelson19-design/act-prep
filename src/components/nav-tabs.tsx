@@ -18,6 +18,7 @@ export const STUDENT_NAV_TABS: NavTab[] = [
   { label: "Study Plan", href: "/student/study-plan", matchPrefix: "/student/study-plan" },
   { label: "Analytics", href: "/student/analytics", matchPrefix: "/student/analytics" },
   { label: "Tests", href: "/student/test", matchPrefix: "/student/test" },
+  { label: "Account", href: "/account", matchPrefix: "/account" },
 ];
 
 export interface NavTabsProps {

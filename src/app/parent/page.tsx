@@ -49,6 +49,9 @@ export default async function ParentHome() {
           <Button asChild variant="outline">
             <Link href="/parent/invite">Invite a child</Link>
           </Button>
+          <Button asChild variant="outline">
+            <Link href="/account">Account</Link>
+          </Button>
           <form action={async () => { "use server"; await signOut({ redirectTo: "/" }); }}>
             <Button variant="outline" type="submit">Sign out</Button>
           </form>
