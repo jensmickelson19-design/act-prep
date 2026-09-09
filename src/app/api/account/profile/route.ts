@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { profileUpdateSchema } from "@/lib/validators";
+import { RATE_LIMITS, rateLimit } from "@/lib/rate-limit";
 
 // Update the signed-in user's name and email. The email is the login identity
 // and there is no email-verification flow, so we require the current password
@@ -11,6 +12,13 @@ export async function PATCH(req: Request) {
   const session = await auth();
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  const limit = await rateLimit(RATE_LIMITS.profileUpdate, `user:${session.user.id}`);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Too many attempts. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(limit.retryAfterSec) } }
+    );
   }
   const parsed = profileUpdateSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {

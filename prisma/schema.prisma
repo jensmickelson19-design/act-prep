@@ -235,6 +235,19 @@ model LessonProgress {
   @@index([userId])
 }
 
+// Fixed-window rate-limit counters. One row per (key, windowStart); `key`
+// encodes the action + client identifier (e.g. "login:auth:1.2.3.4"). Rows are
+// disposable — a periodic job (or the next request past the window) can delete
+// anything with windowStart older than the longest window in use.
+model RateLimitHit {
+  key         String
+  windowStart DateTime
+  count       Int      @default(0)
+
+  @@id([key, windowStart])
+  @@index([windowStart])
+}
+
 // A student's study plan: questionnaire answers + the generated plan artifact.
 // At most one ACTIVE plan per student (enforced in the API route).
 model StudyPlan {
