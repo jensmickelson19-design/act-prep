@@ -41,6 +41,11 @@ model User {
   role         Role
   createdAt    DateTime @default(now())
 
+  // Null until the user confirms their address via the emailed link. There is
+  // a grace window after createdAt during which the app stays usable; see
+  // src/lib/email-verification.ts.
+  emailVerifiedAt DateTime?
+
   // Stripe subscription state (webhooks are the source of truth).
   // A PARENT's subscription covers exactly one linked child (coveredChildId).
   // A STUDENT's subscription covers themselves and grants their linked
@@ -59,8 +64,43 @@ model User {
   inviteCodes     InviteCode[]
   lessonProgress  LessonProgress[]
   studyPlans      StudyPlan[]
+  passwordResetTokens      PasswordResetToken[]
+  emailVerificationTokens  EmailVerificationToken[]
 
   @@index([role])
+}
+
+// One-time password-reset tokens. Only the SHA-256 hash of the token is stored;
+// the raw value goes out in the email link and is never persisted. Rows are
+// deleted on use and can be swept by expiresAt.
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// One-time email-verification tokens. Same hash-only storage as above.
+model EmailVerificationToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // The address being confirmed — pinned at issue time so a later email change
+  // can't be verified by an older link.
+  email     String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
 }
 
 model InviteCode {

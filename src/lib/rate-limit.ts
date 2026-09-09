@@ -88,4 +88,7 @@ export const RATE_LIMITS = {
   login: { name: "login", limit: 10, windowSec: 15 * 60 }, // 10 / 15 min / IP
   passwordChange: { name: "pwchange", limit: 5, windowSec: 15 * 60 },
   profileUpdate: { name: "profile", limit: 10, windowSec: 15 * 60 },
+  forgotPassword: { name: "forgotpw", limit: 5, windowSec: 60 * 60 }, // per IP and per email
+  resetPassword: { name: "resetpw", limit: 10, windowSec: 60 * 60 }, // token submits / IP
+  resendVerification: { name: "resendverify", limit: 4, windowSec: 60 * 60 }, // per user
 } as const satisfies Record<string, RateLimitRule>;

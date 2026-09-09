@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { signupSchema } from "@/lib/validators";
 import { RATE_LIMITS, clientIp, rateLimit } from "@/lib/rate-limit";
+import { sendVerificationEmail } from "@/lib/auth-email";
 
 export async function POST(req: Request) {
   const limit = await rateLimit(RATE_LIMITS.signup, clientIp());
@@ -52,6 +53,10 @@ export async function POST(req: Request) {
     }
     return u;
   });
+
+  // Kick off email verification. Don't fail signup if the send hiccups — the
+  // user can resend from their account, and the grace window covers the gap.
+  await sendVerificationEmail(user.id, user.email).catch(() => {});
 
   return NextResponse.json({ id: user.id, email: user.email, role: user.role });
 }
