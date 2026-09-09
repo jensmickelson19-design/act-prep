@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { reportError } from "@/lib/observability";
 import { Button } from "@/components/ui/button";
 
 // Root error boundary: catches render/data errors from any route that doesn't
@@ -15,8 +16,7 @@ export default function RootError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Surface to the browser console; wire to an error tracker here later.
-    console.error(error);
+    reportError(error, { digest: error.digest, boundary: "root" });
   }, [error]);
 
   return (

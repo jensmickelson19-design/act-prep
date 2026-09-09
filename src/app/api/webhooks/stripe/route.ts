@@ -3,6 +3,7 @@ import type Stripe from "stripe";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { getStripe } from "@/lib/stripe";
+import { reportError } from "@/lib/observability";
 
 // Stripe webhooks are the source of truth for subscription state. The
 // endpoint is public (middleware skips /api); authenticity comes from the
@@ -105,7 +106,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ received: true, duplicate: true });
     }
     // Ledger write failed for another reason — let Stripe retry.
-    console.error("[stripe-webhook] failed to record event", event.id, err);
+    reportError(err, { scope: "stripe-webhook.ledger", eventId: event.id, type: event.type });
     return NextResponse.json({ error: "Ledger unavailable" }, { status: 500 });
   }
 
@@ -114,7 +115,7 @@ export async function POST(req: Request) {
   } catch (err) {
     // Roll back the claim so the retry re-processes this event.
     await prisma.processedStripeEvent.delete({ where: { id: event.id } }).catch(() => {});
-    console.error("[stripe-webhook] handler error for", event.type, event.id, err);
+    reportError(err, { scope: "stripe-webhook.handler", eventId: event.id, type: event.type });
     return NextResponse.json({ error: "Processing failed" }, { status: 500 });
   }
 

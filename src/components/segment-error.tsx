@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { reportError } from "@/lib/observability";
 import { Button } from "@/components/ui/button";
 
 // Shared body for segment-level error boundaries (student / parent areas).
@@ -18,8 +19,8 @@ export function SegmentError({
   homeLabel: string;
 }) {
   useEffect(() => {
-    console.error(error);
-  }, [error]);
+    reportError(error, { digest: error.digest, boundary: homeHref });
+  }, [error, homeHref]);
 
   return (
     <div className="container flex flex-col items-center justify-center gap-5 py-24 text-center">

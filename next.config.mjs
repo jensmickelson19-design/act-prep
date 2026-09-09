@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 
 // Security headers applied to every response. CSP is intentionally conservative
@@ -40,9 +42,26 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Required on Next 14.2 for src/instrumentation.ts (Sentry init +
+    // onRequestError) to load.
+    instrumentationHook: true,
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 
-export default nextConfig;
+// withSentryConfig is a thin wrapper: without SENTRY_* env vars it only adds the
+// SDK's tunneling/tree-shaking niceties and does not upload source maps or call
+// out anywhere at build time.
+export default withSentryConfig(nextConfig, {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  silent: !process.env.CI,
+  // Only attempt source-map upload when we have credentials for it.
+  sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
+  disableLogger: true,
+  widenClientFileUpload: true,
+});
