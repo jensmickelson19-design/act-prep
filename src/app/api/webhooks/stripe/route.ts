@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { getStripe } from "@/lib/stripe";
 
 // Stripe webhooks are the source of truth for subscription state. The
 // endpoint is public (middleware skips /api); authenticity comes from the
 // signature check against STRIPE_WEBHOOK_SECRET.
+//
+// Delivery is at-least-once and Stripe retries any non-2xx, so this handler is
+// idempotent: it records every fully-processed event id in ProcessedStripeEvent
+// and no-ops on repeats. A genuine processing failure returns 500 so Stripe
+// retries rather than dropping the update.
 
 // current_period_end lives on the subscription item in newer Stripe API
 // versions (and on the subscription itself in older ones) — read both.
@@ -15,14 +21,18 @@ function periodEnd(sub: Stripe.Subscription): Date | null {
   return ts ? new Date(ts * 1000) : null;
 }
 
-async function applySubscription(sub: Stripe.Subscription) {
+// Applies subscription state to the matching user. Returns "applied" on a
+// successful write, "no_user" when no row matches (user deleted or a
+// dashboard-created subscription with no linked account — safe to ignore).
+// Any other error propagates so the caller can 500 and let Stripe retry.
+async function applySubscription(sub: Stripe.Subscription): Promise<"applied" | "no_user"> {
   const customerId = typeof sub.customer === "string" ? sub.customer : sub.customer.id;
   const userId = sub.metadata?.userId;
   const coveredChildId = sub.metadata?.coveredChildId || null;
 
   const where = userId ? { id: userId } : { stripeCustomerId: customerId };
-  await prisma.user
-    .update({
+  try {
+    await prisma.user.update({
       where: where as { id: string } | { stripeCustomerId: string },
       data: {
         stripeCustomerId: customerId,
@@ -32,10 +42,38 @@ async function applySubscription(sub: Stripe.Subscription) {
         // unrelated update can't clear a parent's designated child.
         ...(coveredChildId !== null ? { coveredChildId: coveredChildId || null } : {}),
       },
-    })
-    .catch(() => {
-      // User deleted or never linked — nothing to update.
     });
+    return "applied";
+  } catch (err) {
+    // P2025 = "record to update not found": no linked user. Expected for
+    // subscriptions created outside our checkout flow; not an error.
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2025") {
+      return "no_user";
+    }
+    throw err;
+  }
+}
+
+async function handleEvent(event: Stripe.Event): Promise<void> {
+  switch (event.type) {
+    case "checkout.session.completed": {
+      const session = event.data.object as Stripe.Checkout.Session;
+      if (session.mode === "subscription" && session.subscription) {
+        const subId =
+          typeof session.subscription === "string" ? session.subscription : session.subscription.id;
+        const sub = await getStripe().subscriptions.retrieve(subId);
+        await applySubscription(sub);
+      }
+      break;
+    }
+    case "customer.subscription.updated":
+    case "customer.subscription.deleted": {
+      await applySubscription(event.data.object as Stripe.Subscription);
+      break;
+    }
+    default:
+      break;
+  }
 }
 
 export async function POST(req: Request) {
@@ -56,24 +94,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  switch (event.type) {
-    case "checkout.session.completed": {
-      const session = event.data.object as Stripe.Checkout.Session;
-      if (session.mode === "subscription" && session.subscription) {
-        const subId =
-          typeof session.subscription === "string" ? session.subscription : session.subscription.id;
-        const sub = await getStripe().subscriptions.retrieve(subId);
-        await applySubscription(sub);
-      }
-      break;
+  // Idempotency: claim the event id first. A unique-violation means we've
+  // already handled (or are handling) this delivery — ack and stop.
+  try {
+    await prisma.processedStripeEvent.create({
+      data: { id: event.id, type: event.type },
+    });
+  } catch (err) {
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+      return NextResponse.json({ received: true, duplicate: true });
     }
-    case "customer.subscription.updated":
-    case "customer.subscription.deleted": {
-      await applySubscription(event.data.object as Stripe.Subscription);
-      break;
-    }
-    default:
-      break;
+    // Ledger write failed for another reason — let Stripe retry.
+    console.error("[stripe-webhook] failed to record event", event.id, err);
+    return NextResponse.json({ error: "Ledger unavailable" }, { status: 500 });
+  }
+
+  try {
+    await handleEvent(event);
+  } catch (err) {
+    // Roll back the claim so the retry re-processes this event.
+    await prisma.processedStripeEvent.delete({ where: { id: event.id } }).catch(() => {});
+    console.error("[stripe-webhook] handler error for", event.type, event.id, err);
+    return NextResponse.json({ error: "Processing failed" }, { status: 500 });
   }
 
   return NextResponse.json({ received: true });
