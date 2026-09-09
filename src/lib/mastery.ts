@@ -6,13 +6,13 @@ const ALPHA = 0.2; // EMA smoothing.
 // Returns a "delta" in [0,1] representing how much signal this attempt gives.
 // Harder questions matter more: a correct difficulty-5 is the strongest positive
 // signal; a wrong difficulty-1 is the strongest negative signal.
-function deltaFor(isCorrect: boolean, difficulty: number): number {
+export function deltaFor(isCorrect: boolean, difficulty: number): number {
   const w = (difficulty - 1) / 4; // 0..1 over difficulty 1..5
   return isCorrect ? 0.5 + 0.5 * w : 0.5 - 0.5 * w;
 }
 
 // Map our binary correct + difficulty into SM-2's 0–5 quality scale.
-function qualityFor(isCorrect: boolean, difficulty: number): number {
+export function qualityFor(isCorrect: boolean, difficulty: number): number {
   if (isCorrect) return difficulty >= 4 ? 5 : 4;
   return difficulty <= 2 ? 1 : 2;
 }
@@ -49,12 +49,12 @@ export async function recordAttemptAndUpdateMastery(args: {
   });
 }
 
-function clamp01(x: number) {
+export function clamp01(x: number) {
   return Math.max(0, Math.min(1, x));
 }
 
 // Standard SM-2 (lite). Quality 3+ is a "pass"; below 3 resets the interval.
-function nextSm2(easeFactor: number, intervalDays: number, repetitions: number, quality: number) {
+export function nextSm2(easeFactor: number, intervalDays: number, repetitions: number, quality: number) {
   if (quality < 3) {
     return {
       easeFactor: Math.max(1.3, easeFactor - 0.2),

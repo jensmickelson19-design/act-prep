@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
 import { AppShell } from "@/components/app-shell";
+import { VerifyEmailBanner } from "@/components/verify-email-banner";
 
 // Chrome layout for the student dashboard area. Routes in this (app) route
 // group render inside the persistent AppShell nav. The timed runners
@@ -18,6 +19,7 @@ export default async function StudentAppLayout({ children }: { children: ReactNo
 
   return (
     <AppShell userName={session.user.name ?? "Student"} signOut={handleSignOut}>
+      <VerifyEmailBanner />
       {children}
     </AppShell>
   );

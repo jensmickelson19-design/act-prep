@@ -4,7 +4,13 @@ import type { JWT } from "next-auth/jwt";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { RATE_LIMITS, ipFromHeaders, rateLimit } from "@/lib/rate-limit";
 import type { Role } from "@prisma/client";
+
+// Thrown from authorize() when the caller has exceeded the login rate limit.
+// NextAuth surfaces it to the client as a generic CredentialsSignin error,
+// which is fine — we don't want to confirm whether an account exists.
+export class RateLimitError extends Error {}
 
 declare module "next-auth" {
   interface Session {
@@ -40,10 +46,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: {},
         password: {},
       },
-      async authorize(raw) {
+      async authorize(raw, request) {
         const parsed = credentialsSchema.safeParse(raw);
         if (!parsed.success) return null;
         const { email, password } = parsed.data;
+
+        // Throttle by IP and, separately, by the email being targeted so one
+        // account can't be hammered from many IPs.
+        const ip = ipFromHeaders(request?.headers ?? null);
+        const [byIp, byEmail] = await Promise.all([
+          rateLimit(RATE_LIMITS.login, ip),
+          rateLimit(RATE_LIMITS.login, `email:${email.toLowerCase()}`),
+        ]);
+        if (!byIp.ok || !byEmail.ok) {
+          throw new RateLimitError("Too many attempts");
+        }
 
         const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
         if (!user) return null;

@@ -1,17 +1,16 @@
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
 import { checkAccess } from "@/lib/access";
+import { requireAppUser } from "@/lib/require-user";
 
-// Subscription gate for every /student route (drills, tests, lessons,
-// analytics, study plan). Authentication/role routing is middleware's job;
-// this layout only enforces the paywall.
+// Gate for every /student route (drills, tests, lessons, analytics, study
+// plan). Authentication/role routing is middleware's job; this layout enforces
+// email verification (post-grace) and the subscription paywall.
 export default async function StudentGateLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
-  if (!session) redirect("/login");
+  const { session } = await requireAppUser();
 
   const access = await checkAccess(session.user.id, session.user.role);
   if (!access.hasAccess) redirect("/subscribe");
