@@ -82,11 +82,18 @@ export default async function Home() {
       </section>
 
       <footer className="border-t border-border">
-        <div className="container flex h-16 items-center justify-between text-xs text-muted-foreground">
+        <div className="container flex h-16 flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-muted-foreground">
           <span className="font-serif text-sm font-semibold tracking-tight text-foreground">
             ACT Prep
           </span>
-          <span>Adaptive practice for the ACT.</span>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:text-foreground">
+              Terms of Service
+            </Link>
+            <Link href="/privacy" className="hover:text-foreground">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </footer>
     </main>
