@@ -67,7 +67,15 @@ function LoginForm() {
               <Input id="email" name="email" type="email" required autoComplete="email" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  href="/forgot-password"
+                  className="text-xs font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  Forgot password?
+                </Link>
+              </div>
               <Input id="password" name="password" type="password" required autoComplete="current-password" />
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}

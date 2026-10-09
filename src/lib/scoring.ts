@@ -153,7 +153,7 @@ function localDateStr(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-function mapAccuracyToScaled(accuracy: number): number {
+export function mapAccuracyToScaled(accuracy: number): number {
   // Piecewise-linear: each tuple is (weighted accuracy, scaled score).
   // Calibrated from the expected-score model fitted to the seeded diagnostic
   // difficulty mix — weighted accuracy ~0.25 is chance-level (4-choice
