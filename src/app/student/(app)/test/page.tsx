@@ -26,7 +26,7 @@ export default async function TestStartPage() {
   });
 
   return (
-    <main className="container max-w-2xl space-y-8 py-12">
+    <div className="mx-auto max-w-2xl space-y-8">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Practice Test 1</h1>
         <p className="mt-1 text-muted-foreground">
@@ -94,10 +94,7 @@ export default async function TestStartPage() {
       <div className="flex flex-col gap-3">
         <StartTestButton withScience />
         <StartTestButton withScience={false} />
-        <Button asChild variant="ghost">
-          <Link href="/student">Cancel</Link>
-        </Button>
       </div>
-    </main>
+    </div>
   );
 }

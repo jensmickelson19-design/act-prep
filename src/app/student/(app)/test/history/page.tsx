@@ -24,7 +24,7 @@ export default async function TestHistoryPage() {
   });
 
   return (
-    <main className="container max-w-3xl space-y-6 py-12">
+    <div className="mx-auto max-w-3xl space-y-6">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Past practice tests</h1>
         <p className="mt-1 text-muted-foreground">
@@ -83,6 +83,6 @@ export default async function TestHistoryPage() {
       <Button asChild variant="ghost">
         <Link href="/student/test">Back</Link>
       </Button>
-    </main>
+    </div>
   );
 }
